@@ -112,7 +112,7 @@
         {
             "id": "clustering_method", 
             "name": "Clustering method",
-            "description": "If 'dynamic' is selected, the option 'MSP window' is used)",
+            "description": "If 'dynamic' is selected, the option 'MSP window' is used",
             "type": "String", 
             "optional": true,
             "default-value": "static",
@@ -140,7 +140,7 @@
         {
             "id": "msp_window", 
             "name": "MSP window",
-            "description": "Used only if 'Clusters type' is set to 'dynamic')",
+            "description": "Used only if 'Clustering method' is set to 'dynamic')",
             "type": "Number",
             "optional": true,
             "minimum": 0,
@@ -151,7 +151,7 @@
         {
             "id": "msp_threshold_method", 
             "name": "MSP scores threshold method",
-            "description": "If 'dynamic' is selected, the option 'MSP scores threshold' is used)",
+            "description": "If 'arbitrary' is selected, the option 'MSP scores threshold' is used",
             "type": "String", 
             "optional": true,
             "default-value": "arbitrary",
