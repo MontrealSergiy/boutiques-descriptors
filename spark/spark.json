@@ -207,7 +207,7 @@
         },
         {
             "id": "k_hubness_map_generation",
-            "name": "Step 3: k-hubness map generation",
+            "name": "Step 4: k-hubness map generation",
             "members": [
                 "p_value"
             ]
