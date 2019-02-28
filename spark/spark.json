@@ -1,33 +1,33 @@
 {
-    "command-line": "$SPARK_DIR/run_SPark.sh \"[FMRI_DATA]\" [GREY_MATTER_MASK] [NUMBER_OF_RESAMPLING] \"[NETWORK_SCALES]\" [NUMBER_OF_ITERATIONS] [P_VALUE] resamplingMethod [RESAMPLING_METHOD] blockWindowLength \"[BLOCK_WINDOW_LENGTH]\" rerunStep1 [RERUN_STEP_1] dictionaryInitMethod [DICTIONARY_INIT_METHOD] sparseCodingMethod [SPARSE_CODING_METHOD] preserveAtomsDict [PRESERVE_ATOMS_DICT] rerunStep2 [RERUN_STEP_2] rerunStep3 [RERUN_STEP_3] rerunStep4 [RERUN_STEP_4]", 
+    "command-line": "$SPARK_DIR/run_SPark.sh \"[FMRI_DATA]\" [GREY_MATTER_MASK] [NUMBER_OF_RESAMPLING] \"[NETWORK_SCALES]\" [NUMBER_OF_ITERATIONS] [P_VALUE] resamplingMethod [RESAMPLING_METHOD] blockWindowLength \"[BLOCK_WINDOW_LENGTH]\" dictionaryInitMethod [DICTIONARY_INIT_METHOD] sparseCodingMethod [SPARSE_CODING_METHOD] preserveAtomsDict [PRESERVE_ATOMS_DICT]",
     "container-image": {
         "image": "spark",
         "type": "singularity"
-    }, 
-    "name": "SPARK", 
+    },
+    "name": "SPARK",
     "author": "Obaï Bin Ka’b Ali",
-    "description": "SParsity-based Analysis of Reliable K-hubness for Brain Functional Connectivity fMRI", 
+    "description": "SParsity-based Analysis of Reliable K-hubness for Brain Functional Connectivity fMRI",
     "inputs": [
         {
-            "id": "fmri_data", 
-            "name": "Preprocessed fMRI data", 
+            "id": "fmri_data",
+            "name": "Preprocessed fMRI data",
             "description": "4-D image: 3-D space + time; MINC or NIfTI format",
             "type": "File",
             "list": true,
-            "list-separator": ";",
+            "list-separator": ",",
             "optional": false,
             "value-key": "[FMRI_DATA]"
-        }, 
+        },
         {
-            "id": "grey_matter_mask", 
+            "id": "grey_matter_mask",
             "name": "Grey matter mask",
             "description": "3-D image; MINC or NIfTI format",
-            "type": "File", 
+            "type": "File",
             "optional": false,
             "value-key": "[GREY_MATTER_MASK]"
-        }, 
+        },
         {
-            "id": "number_of_resampling", 
+            "id": "number_of_resampling",
             "name": "Number of resampling",
             "description": "Number of bootstrap resampling at the individual level. A recommended value is 100.",
             "type": "Number",
@@ -37,10 +37,10 @@
             "value-key": "[NUMBER_OF_RESAMPLING]"
         },
         {
-            "id": "resampling_method", 
+            "id": "resampling_method",
             "name": "Resampling method",
-            "description": "(NIAK) Method used to resample the data under the null hypothesis. Note: If 'CBB' is selected, the option 'Block window length' is used.", 
-            "type": "String", 
+            "description": "Method (from NIAK) used to resample the data under the null hypothesis. Note: If 'CBB' is selected, the option 'Block window length' is used.",
+            "type": "String",
             "optional": true,
             "value-choices": [
                 "CBB",
@@ -56,7 +56,7 @@
                 "AR1G": [
                     "block_window_length"
                 ]
-            }, 
+            },
             "value-requires": {
                 "CBB": [
                     "block_window_length"
@@ -71,59 +71,46 @@
             "value-key": "[RESAMPLING_METHOD]"
         },
         {
-            "id": "block_window_length", 
+            "id": "block_window_length",
             "name": "Block window length",
-            "description": "Window length used in the circular block bootstrap. The unit of the window length is 'time-point' with each time-point indicating a 3D scan at each TR. If multiple numbers are specified, then a number is randomly selected from the list at each resampling. It is recommended to use a minimum of sqrt(T), where T is the total number of time points in the fMRI time-course. It is also recommended to randomize the window length to reduce a bias by window size.",
+            "description": "Three numbers, respectively '[begin] [step] [end]', used to create a regularly-spaced vector. In order to specify a single number, for instance '15', enter the same number for [begin] and [end], for instance '15 1 15'. A number in this vector corresponds to a window length used in the circular block bootstrap. The unit of the window length is 'time-point', with each time-point indicating a 3D scan at each TR. If multiple numbers are specified, then a number is randomly selected from the list at each resampling. It is recommended to use a minimum of sqrt(T), where T is the total number of time points in the fMRI time-course. It is also recommended to randomize the window length to reduce a bias by window size.",
             "type": "Number",
             "integer": true,
             "list": true,
-            "list-separator": ":",
             "optional": true,
             "minimum": 1,
-            "default-value": [10, 30],
+            "min-list-entries": 3,
+            "max-list-entries": 3,
+            "default-value": [10, 1, 30],
             "command-line-flag": "blockWindowLength",
             "value-key": "[BLOCK_WINDOW_LENGTH]"
-        }, 
+        },
         {
-            "id": "rerun_step_1", 
-            "name": "Rerun step 1 flag", 
-            "description": "If set to true, then this step will be rerun along with the subsequent steps.",
-            "type": "Number",
-            "integer": true,
-            "optional": true,
-            "value-choices": [
-                0,
-                1
-            ],
-            "default-value": 0,
-            "command-line-flag": "rerunStep1",
-            "value-key": "[RERUN_STEP_1]"
-        }, 
-        {
-            "id": "network_scales", 
-            "name": "Network scales", 
-            "description": "The range of network scales to be tested. An optimal network scale is estimated from the specified set of numbers. A recommended value is '10:2:30'.",
+            "id": "network_scales",
+            "name": "Network scales",
+            "description": "Three numbers, respectively '[begin] [step] [end]' used to create a regularly-spaced vector. In order to specify a single number, for instance '15', enter the same number for [begin] and [end], for instance '15 1 15'. This vector of numbers corresponds to the range of network scales to be tested. An optimal network scale is estimated from the specified set of numbers. A recommended value is '10 2 30'.",
             "type": "Number",
             "integer": true,
             "list": true,
-            "list-separator": ":",
             "optional": false,
             "minimum": 1,
+            "min-list-entries": 3,
+            "max-list-entries": 3,
             "value-key": "[NETWORK_SCALES]"
-        }, 
+        },
         {
-            "id": "number_of_iterations", 
-            "name": "Number of iterations", 
+            "id": "number_of_iterations",
+            "name": "Number of iterations",
             "description": "A recommended value is 20.",
             "type": "Number",
             "integer": true,
             "optional": false,
             "minimum": 2,
             "value-key": "[NUMBER_OF_ITERATIONS]"
-        }, 
+        },
         {
-            "id": "dictionary_init_method", 
-            "name": "Dictionary initialization method", 
+            "id": "dictionary_init_method",
+            "name": "Dictionary initialization method",
             "description": "If 'GivenMatrix' is selected, then the dictionary will be initialized by a random permutation of the raw data obtained in step 1. If 'DataElements' is selected, then the dictionary will be initialized by the first N (number of atoms) columns in the raw data obtained in step 1.",
             "type": "String",
             "value-choices": [
@@ -134,10 +121,10 @@
             "optional": true,
             "command-line-flag": "dictionaryInitMethod",
             "value-key": "[DICTIONARY_INIT_METHOD]"
-        }, 
+        },
         {
-            "id": "sparse_coding_method", 
-            "name": "Sparse coding method", 
+            "id": "sparse_coding_method",
+            "name": "Sparse coding method",
             "type": "String",
             "value-choices": [
                 "OMP",
@@ -147,10 +134,10 @@
             "optional": true,
             "command-line-flag": "sparseCodingMethod",
             "value-key": "[SPARSE_CODING_METHOD]"
-        }, 
+        },
         {
-            "id": "preserve_atoms_dict", 
-            "name": "Perserve atoms dictionary flag", 
+            "id": "preserve_atoms_dict",
+            "name": "Preserve atoms dictionary flag",
             "description": "If set to false, then the first N-1 atoms will be trained and updated while the last one will be fixed as a constant vector (of 1).",
             "type": "Number",
             "integer": true,
@@ -162,82 +149,38 @@
             "default-value": 1,
             "command-line-flag": "preserveAtomsDict",
             "value-key": "[PRESERVE_ATOMS_DICT]"
-        }, 
+        },
         {
-            "id": "rerun_step_2", 
-            "name": "Rerun step 2 flag", 
-            "description": "If set to true, then this step will be rerun along with the subsequent steps.",
-            "type": "Number",
-            "integer": true,
-            "optional": true,
-            "value-choices": [
-                0,
-                1
-            ],
-            "default-value": 0,
-            "command-line-flag": "rerunStep2",
-            "value-key": "[RERUN_STEP_2]"
-        }, 
-        {
-            "id": "rerun_step_3", 
-            "name": "Rerun step 3 flag", 
-            "description": "If set to true, then this step will be rerun along with the subsequent steps.",
-            "type": "Number",
-            "integer": true,
-            "optional": true,
-            "value-choices": [
-                0,
-                1
-            ],
-            "default-value": 0,
-            "command-line-flag": "rerunStep3",
-            "value-key": "[RERUN_STEP_3]"
-        }, 
-        {
-            "id": "p_value", 
-            "name": "P-Value", 
+            "id": "p_value",
+            "name": "P-Value",
             "description": "Significance level, using a Z-test, for removing inconsistent elements in the average sparse coefficients (considered as the Gaussian noise) after spatial clustering using the threshold kth.",
             "type": "Number",
             "optional": false,
             "minimum": 0,
             "maximum": 1,
             "value-key": "[P_VALUE]"
-        }, 
-        {
-            "id": "rerun_step_4", 
-            "name": "Rerun step 4 flag", 
-            "description": "If set to true, then this step will be rerun.",
-            "type": "Number",
-            "integer": true,
-            "optional": true,
-            "value-choices": [
-                0,
-                1
-            ],
-            "default-value": 0,
-            "command-line-flag": "rerunStep4",
-            "value-key": "[RERUN_STEP_4]"
         }
-    ], 
+    ],
     "output-files": [
         {
-            "id": "k_hubness_map", 
+            "id": "k_hubness_map",
             "name": "k-hubness map",
             "description": "3D image, MINC or NIfTI format",
-            "path-template": "khubness.*",
+            "path-template": "k-hubness-map.*",
             "optional": false
         },
         {
-            "id": "atom_maps", 
+            "id": "atom_maps",
             "name": "Atom maps",
             "description": "3D image, MINC or NIfTI format",
             "path-template": "atom-maps.*",
             "optional": false
         },
         {
-            "id": "intermediate_files", 
+            "id": "intermediate_files",
             "name": "Intermediate files",
-            "path-template": "intermediate.*",
+            "path-template": "*",
+            "list": true,
             "optional": false
         }
     ],
@@ -248,8 +191,7 @@
             "members": [
                 "number_of_resampling",
                 "resampling_method",
-                "block_window_length",
-                "rerun_step_1"
+                "block_window_length"
             ]
         },
         {
@@ -260,29 +202,20 @@
                 "number_of_iterations",
                 "dictionary_init_method",
                 "sparse_coding_method",
-                "preserve_atoms_dict",
-                "rerun_step_2"
-            ]
-        },
-        {
-            "id": "spatial_clustering",
-            "name": "Step 3: Spatial clustering",
-            "members": [
-                "rerun_step_3"
+                "preserve_atoms_dict"
             ]
         },
         {
             "id": "k_hubness_map_generation",
-            "name": "Step 4: k-hubness map generation",
+            "name": "Step 3: k-hubness map generation",
             "members": [
-                "p_value",
-                "rerun_step_4"
+                "p_value"
             ]
         }
     ],
-    "schema-version": "0.5", 
+    "schema-version": "0.5",
     "tags": {
         "domain": "neuroinformatics"
-    }, 
+    },
     "tool-version": "1.0"
 }
