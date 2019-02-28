@@ -1,0 +1,126 @@
+{
+    "name": "DistanceMap",
+    "command-line": "nipype_cmd nipype.interfaces.fsl DistanceMap [ARGS] [DISTANCE_MAP] [ENVIRON] [IN_FILE] [INVERT_INPUT] [LOCAL_MAX_FILE] [MASK_FILE] [OUTPUT_TYPE]",
+    "description": "DistanceMap, as implemented in Nipype (module: nipype.interfaces.fsl, interface: DistanceMap).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "distance_map",
+            "name": "Distance map",
+            "type": "File",
+            "value-key": "[DISTANCE_MAP]",
+            "command-line-flag": "--out=",
+            "description": "A file name. Distance map to write.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "command-line-flag": "--in=",
+            "description": "An existing file name. Image to calculate distance values for.",
+            "optional": false
+        },
+        {
+            "id": "invert_input",
+            "name": "Invert input",
+            "type": "Flag",
+            "value-key": "[INVERT_INPUT]",
+            "command-line-flag": "--invert",
+            "description": "A boolean. Invert input image.",
+            "optional": true
+        },
+        {
+            "id": "local_max_file",
+            "name": "Local max file",
+            "type": "Flag",
+            "value-key": "[LOCAL_MAX_FILE]",
+            "command-line-flag": "--localmax=",
+            "description": "A boolean or a file name. Write an image of the local maxima.",
+            "optional": true
+        },
+        {
+            "id": "local_max_file_2",
+            "name": "Local max file",
+            "type": "File",
+            "value-key": "[LOCAL_MAX_FILE]",
+            "command-line-flag": "--localmax=",
+            "description": "A boolean or a file name. Write an image of the local maxima.",
+            "optional": true
+        },
+        {
+            "id": "mask_file",
+            "name": "Mask file",
+            "type": "File",
+            "value-key": "[MASK_FILE]",
+            "command-line-flag": "--mask=",
+            "description": "An existing file name. Binary mask to contrain calculations.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Distance map",
+            "id": "distance_map_outfile",
+            "path-template": "[DISTANCE_MAP]",
+            "optional": true,
+            "description": "An existing file name. Value is distance to nearest nonzero voxels."
+        },
+        {
+            "name": "Local max file",
+            "id": "local_max_file_outfile",
+            "path-template": "[LOCAL_MAX_FILE]",
+            "optional": true,
+            "description": "A file name. Image of local maxima."
+        }
+    ],
+    "groups": [
+        {
+            "id": "local_max_file_group",
+            "name": "Local max file group",
+            "members": [
+                "local_max_file",
+                "local_max_file_2"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

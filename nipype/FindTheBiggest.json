@@ -1,0 +1,71 @@
+{
+    "name": "FindTheBiggest",
+    "command-line": "nipype_cmd nipype.interfaces.fsl FindTheBiggest [ARGS] [ENVIRON] [IN_FILES] [OUT_FILE] [OUTPUT_TYPE]",
+    "description": "FindTheBiggest, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FindTheBiggest).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_files",
+            "name": "In files",
+            "type": "File",
+            "list": true,
+            "value-key": "[IN_FILES]",
+            "description": "A list of items which are an existing file name. A list of input volumes or a singlematrixfile.",
+            "optional": false
+        },
+        {
+            "id": "out_file",
+            "name": "Out file",
+            "type": "File",
+            "value-key": "[OUT_FILE]",
+            "description": "A file name. File with the resulting segmentation.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out file",
+            "id": "out_file_outfile",
+            "path-template": "biggestSegmentation.nii",
+            "optional": true,
+            "description": "An existing file name. Output file indexed in order of input files."
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

@@ -1,0 +1,221 @@
+{
+    "name": "ICA_AROMA",
+    "command-line": "nipype_cmd nipype.interfaces.fsl ICA_AROMA [TR] [ARGS] [DENOISE_TYPE] [DIM] [ENVIRON] [FEAT_DIR] [FNIRT_WARP_FILE] [IN_FILE] [MASK] [MAT_FILE] [MELODIC_DIR] [MOTION_PARAMETERS] [OUT_DIR]",
+    "description": "ICA_AROMA, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ICA_AROMA).",
+    "inputs": [
+        {
+            "id": "TR",
+            "name": "Tr",
+            "type": "Number",
+            "value-key": "[TR]",
+            "command-line-flag": "-tr",
+            "description": "A float. Tr in seconds. if this is not specified the tr will be extracted from the header of the fmri nifti file.",
+            "optional": true
+        },
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "denoise_type",
+            "name": "Denoise type",
+            "type": "String",
+            "value-key": "[DENOISE_TYPE]",
+            "command-line-flag": "-den",
+            "description": "'nonaggr' or 'aggr' or 'both' or 'no'. Type of denoising strategy:-no: only classification, no denoising-nonaggr (default): non-aggresssive denoising, i.e. partial component regression-aggr: aggressive denoising, i.e. full component regression-both: both aggressive and non-aggressive denoising (two outputs).",
+            "optional": false,
+            "default-value": "nonaggr",
+            "value-choices": [
+                "nonaggr",
+                "aggr",
+                "both",
+                "no"
+            ]
+        },
+        {
+            "id": "dim",
+            "name": "Dim",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[DIM]",
+            "command-line-flag": "-dim",
+            "description": "An integer (int or long). Dimensionality reduction when running melodic (defualt is automatic estimation).",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "feat_dir",
+            "name": "Feat dir",
+            "type": "File",
+            "value-key": "[FEAT_DIR]",
+            "command-line-flag": "-feat",
+            "description": "An existing directory name. If a feat directory exists and temporal filtering has not been run yet, ica_aroma can use the files in this directory.",
+            "optional": false
+        },
+        {
+            "id": "fnirt_warp_file",
+            "name": "Fnirt warp file",
+            "type": "File",
+            "value-key": "[FNIRT_WARP_FILE]",
+            "command-line-flag": "-warp",
+            "description": "An existing file name. File name of the warp-file describing the non-linear registration (e.g. fsl fnirt) of the structural data to mni152 space (.nii.gz).",
+            "optional": true
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "command-line-flag": "-i",
+            "description": "An existing file name. Volume to be denoised.",
+            "optional": false
+        },
+        {
+            "id": "mask",
+            "name": "Mask",
+            "type": "File",
+            "value-key": "[MASK]",
+            "command-line-flag": "-m",
+            "description": "An existing file name. Path/name volume mask.",
+            "optional": true
+        },
+        {
+            "id": "mat_file",
+            "name": "Mat file",
+            "type": "File",
+            "value-key": "[MAT_FILE]",
+            "command-line-flag": "-affmat",
+            "description": "An existing file name. Path/name of the mat-file describing the affine registration (e.g. fsl flirt) of the functional data to structural space (.mat file).",
+            "optional": true
+        },
+        {
+            "id": "melodic_dir",
+            "name": "Melodic dir",
+            "type": "File",
+            "value-key": "[MELODIC_DIR]",
+            "command-line-flag": "-meldir",
+            "description": "An existing directory name. Path to melodic directory if melodic has already been run.",
+            "optional": true
+        },
+        {
+            "id": "motion_parameters",
+            "name": "Motion parameters",
+            "type": "File",
+            "value-key": "[MOTION_PARAMETERS]",
+            "command-line-flag": "-mc",
+            "description": "An existing file name. Motion parameters file.",
+            "optional": false
+        },
+        {
+            "id": "out_dir",
+            "name": "Out dir",
+            "type": "File",
+            "value-key": "[OUT_DIR]",
+            "command-line-flag": "-o",
+            "description": "A directory name. Output directory.",
+            "optional": false,
+            "default-value": "out"
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Aggr denoised file",
+            "id": "aggr_denoised_file",
+            "path-template": "out/denoised_func_data_aggr.nii.gz",
+            "optional": true,
+            "description": "An existing file name. If generated: aggressively denoised volume."
+        },
+        {
+            "name": "Nonaggr denoised file",
+            "id": "nonaggr_denoised_file",
+            "path-template": "out/denoised_func_data_nonaggr.nii.gz",
+            "optional": true,
+            "description": "An existing file name. If generated: non aggressively denoised volume."
+        },
+        {
+            "name": "Out dir",
+            "id": "out_dir_outfile",
+            "path-template": "out",
+            "optional": true,
+            "description": "An existing directory name. Directory contains (in addition to the denoised files): melodic.ica + classified_motion_components + classification_overview + feature_scores + melodic_ic_mni)."
+        }
+    ],
+    "groups": [
+        {
+            "id": "mutex_group",
+            "name": "Mutex group",
+            "members": [
+                "fnirt_warp_file",
+                "mat_file",
+                "in_file",
+                "motion_parameters",
+                "feat_dir"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_2",
+            "name": "Mutex group 2",
+            "members": [
+                "in_file",
+                "feat_dir"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_3",
+            "name": "Mutex group 3",
+            "members": [
+                "mask",
+                "feat_dir"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_4",
+            "name": "Mutex group 4",
+            "members": [
+                "mat_file",
+                "feat_dir"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_5",
+            "name": "Mutex group 5",
+            "members": [
+                "fnirt_warp_file",
+                "feat_dir"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_6",
+            "name": "Mutex group 6",
+            "members": [
+                "motion_parameters",
+                "feat_dir"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

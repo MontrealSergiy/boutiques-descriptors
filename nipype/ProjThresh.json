@@ -1,0 +1,72 @@
+{
+    "name": "ProjThresh",
+    "command-line": "nipype_cmd nipype.interfaces.fsl ProjThresh [ARGS] [ENVIRON] [IN_FILES] [OUTPUT_TYPE] [THRESHOLD]",
+    "description": "ProjThresh, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ProjThresh).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_files",
+            "name": "In files",
+            "type": "File",
+            "list": true,
+            "value-key": "[IN_FILES]",
+            "description": "A list of items which are an existing file name. A list of input volumes.",
+            "optional": false
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "threshold",
+            "name": "Threshold",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[THRESHOLD]",
+            "description": "An integer (int or long). Threshold indicating minimum number of seed voxels entering this mask region.",
+            "optional": false
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out files",
+            "id": "out_files",
+            "path-template": "out_files",
+            "optional": true,
+            "description": "A list of items which are an existing file name. Path/name of output volume after thresholding."
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

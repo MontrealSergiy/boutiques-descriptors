@@ -1,0 +1,125 @@
+{
+    "name": "SUSAN",
+    "command-line": "nipype_cmd nipype.interfaces.fsl SUSAN [ARGS] [BRIGHTNESS_THRESHOLD] [DIMENSION] [ENVIRON] [FWHM] [IN_FILE] [OUT_FILE] [OUTPUT_TYPE] [USANS] [USE_MEDIAN]",
+    "description": "SUSAN, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SUSAN).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "brightness_threshold",
+            "name": "Brightness threshold",
+            "type": "Number",
+            "value-key": "[BRIGHTNESS_THRESHOLD]",
+            "description": "A float. Brightness threshold and should be greater than noise level and less than contrast of edges to be preserved.",
+            "optional": false
+        },
+        {
+            "id": "dimension",
+            "name": "Dimension",
+            "type": "Number",
+            "value-key": "[DIMENSION]",
+            "description": "3 or 2. Within-plane (2) or fully 3d (3).",
+            "optional": true,
+            "default-value": 3,
+            "integer": true,
+            "value-choices": [
+                3,
+                2
+            ]
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "fwhm",
+            "name": "Fwhm",
+            "type": "Number",
+            "value-key": "[FWHM]",
+            "description": "A float. Fwhm of smoothing, in mm, gets converted using sqrt(8*log(2)).",
+            "optional": false
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "description": "An existing file name. Filename of input timeseries.",
+            "optional": false
+        },
+        {
+            "id": "out_file",
+            "name": "Out file",
+            "type": "File",
+            "value-key": "[OUT_FILE]",
+            "description": "A file name. Output file name.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "usans",
+            "name": "Usans",
+            "type": "String",
+            "list": true,
+            "max-list-entries": 2,
+            "value-key": "[USANS]",
+            "description": "A list of at most 2 items which are a tuple of the form: (an existing file name, a float). Determines whether the smoothing area (usan) is to be found from secondary images (0, 1 or 2). a negative value for any brightness threshold will auto-set the threshold at 10% of the robust range.",
+            "optional": true,
+            "default-value": []
+        },
+        {
+            "id": "use_median",
+            "name": "Use median",
+            "type": "Number",
+            "value-key": "[USE_MEDIAN]",
+            "description": "1 or 0. Whether to use a local median filter in the cases where single-point noise is detected.",
+            "optional": true,
+            "default-value": 1,
+            "integer": true,
+            "value-choices": [
+                1,
+                0
+            ]
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Smoothed file",
+            "id": "smoothed_file",
+            "path-template": "smoothed_file",
+            "optional": true,
+            "description": "An existing file name. Smoothed output file."
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

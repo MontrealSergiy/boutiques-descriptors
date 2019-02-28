@@ -1,0 +1,406 @@
+{
+    "name": "Eddy",
+    "command-line": "nipype_cmd nipype.interfaces.fsl Eddy [ARGS] [CNR_MAPS] [DONT_PEAS] [DONT_SEP_OFFS_MOVE] [ENVIRON] [FEP] [FIELD] [FIELD_MAT] [FLM] [FUDGE_FACTOR] [FWHM] [IN_ACQP] [IN_BVAL] [IN_BVEC] [IN_FILE] [IN_INDEX] [IN_MASK] [IN_TOPUP_FIELDCOEF] [IN_TOPUP_MOVPAR] [INTERP] [IS_SHELLED] [METHOD] [NITER] [NUM_THREADS] [NVOXHP] [OUT_BASE] [OUTPUT_TYPE] [REPOL] [RESIDUALS] [SESSION] [SLM] [USE_CUDA]",
+    "description": "Eddy, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Eddy).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "cnr_maps",
+            "name": "Cnr maps",
+            "type": "Flag",
+            "value-key": "[CNR_MAPS]",
+            "command-line-flag": "--cnr_maps",
+            "description": "A boolean. Output cnr-maps.",
+            "optional": true
+        },
+        {
+            "id": "dont_peas",
+            "name": "Dont peas",
+            "type": "Flag",
+            "value-key": "[DONT_PEAS]",
+            "command-line-flag": "--dont_peas",
+            "description": "A boolean. Do not perform a post-eddy alignment of shells.",
+            "optional": true
+        },
+        {
+            "id": "dont_sep_offs_move",
+            "name": "Dont sep offs move",
+            "type": "Flag",
+            "value-key": "[DONT_SEP_OFFS_MOVE]",
+            "command-line-flag": "--dont_sep_offs_move",
+            "description": "A boolean. Do not attempt to separate field offset from subject movement.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "fep",
+            "name": "Fep",
+            "type": "Flag",
+            "value-key": "[FEP]",
+            "command-line-flag": "--fep",
+            "description": "A boolean. Fill empty planes in x- or y-directions.",
+            "optional": true
+        },
+        {
+            "id": "field",
+            "name": "Field",
+            "type": "String",
+            "value-key": "[FIELD]",
+            "command-line-flag": "--field=",
+            "description": "A unicode string. Nontopup fieldmap scaled in hz - filename has to be provided without an extension. topup is strongly recommended.",
+            "optional": true
+        },
+        {
+            "id": "field_mat",
+            "name": "Field mat",
+            "type": "File",
+            "value-key": "[FIELD_MAT]",
+            "command-line-flag": "--field_mat=",
+            "description": "An existing file name. Matrix that specifies the relative locations of the field specified by --field and first volume in file --imain.",
+            "optional": true
+        },
+        {
+            "id": "flm",
+            "name": "Flm",
+            "type": "String",
+            "value-key": "[FLM]",
+            "command-line-flag": "--flm=",
+            "description": "'linear' or 'quadratic' or 'cubic'. First level ec model.",
+            "optional": true,
+            "value-choices": [
+                "linear",
+                "quadratic",
+                "cubic"
+            ]
+        },
+        {
+            "id": "fudge_factor",
+            "name": "Fudge factor",
+            "type": "Number",
+            "value-key": "[FUDGE_FACTOR]",
+            "command-line-flag": "--ff=",
+            "description": "A float. Fudge factor for hyperparameter error variance.",
+            "optional": true,
+            "default-value": 10.0
+        },
+        {
+            "id": "fwhm",
+            "name": "Fwhm",
+            "type": "Number",
+            "value-key": "[FWHM]",
+            "command-line-flag": "--fwhm=",
+            "description": "A float. Fwhm for conditioning filter when estimating the parameters.",
+            "optional": true
+        },
+        {
+            "id": "in_acqp",
+            "name": "In acqp",
+            "type": "File",
+            "value-key": "[IN_ACQP]",
+            "command-line-flag": "--acqp=",
+            "description": "An existing file name. File containing acquisition parameters.",
+            "optional": false
+        },
+        {
+            "id": "in_bval",
+            "name": "In bval",
+            "type": "File",
+            "value-key": "[IN_BVAL]",
+            "command-line-flag": "--bvals=",
+            "description": "An existing file name. File containing the b-values for all volumes in --imain.",
+            "optional": false
+        },
+        {
+            "id": "in_bvec",
+            "name": "In bvec",
+            "type": "File",
+            "value-key": "[IN_BVEC]",
+            "command-line-flag": "--bvecs=",
+            "description": "An existing file name. File containing the b-vectors for all volumes in --imain.",
+            "optional": false
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "command-line-flag": "--imain=",
+            "description": "An existing file name. File containing all the images to estimate distortions for.",
+            "optional": false
+        },
+        {
+            "id": "in_index",
+            "name": "In index",
+            "type": "File",
+            "value-key": "[IN_INDEX]",
+            "command-line-flag": "--index=",
+            "description": "An existing file name. File containing indices for all volumes in --imain into --acqp and --topup.",
+            "optional": false
+        },
+        {
+            "id": "in_mask",
+            "name": "In mask",
+            "type": "File",
+            "value-key": "[IN_MASK]",
+            "command-line-flag": "--mask=",
+            "description": "An existing file name. Mask to indicate brain.",
+            "optional": false
+        },
+        {
+            "id": "in_topup_fieldcoef",
+            "name": "In topup fieldcoef",
+            "type": "File",
+            "value-key": "[IN_TOPUP_FIELDCOEF]",
+            "command-line-flag": "--topup=",
+            "description": "An existing file name. Topup file containing the field coefficients.",
+            "optional": true
+        },
+        {
+            "id": "in_topup_movpar",
+            "name": "In topup movpar",
+            "type": "File",
+            "value-key": "[IN_TOPUP_MOVPAR]",
+            "description": "An existing file name. Topup movpar.txt file.",
+            "optional": true
+        },
+        {
+            "id": "interp",
+            "name": "Interp",
+            "type": "String",
+            "value-key": "[INTERP]",
+            "command-line-flag": "--interp=",
+            "description": "'spline' or 'trilinear'. Interpolation model for estimation step.",
+            "optional": true,
+            "value-choices": [
+                "spline",
+                "trilinear"
+            ]
+        },
+        {
+            "id": "is_shelled",
+            "name": "Is shelled",
+            "type": "Flag",
+            "value-key": "[IS_SHELLED]",
+            "command-line-flag": "--data_is_shelled",
+            "description": "A boolean. Override internal check to ensure that date are acquired on a set of b-value shells.",
+            "optional": true
+        },
+        {
+            "id": "method",
+            "name": "Method",
+            "type": "String",
+            "value-key": "[METHOD]",
+            "command-line-flag": "--resamp=",
+            "description": "'jac' or 'lsr'. Final resampling method (jacobian/least squares).",
+            "optional": true,
+            "value-choices": [
+                "jac",
+                "lsr"
+            ]
+        },
+        {
+            "id": "niter",
+            "name": "Niter",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NITER]",
+            "command-line-flag": "--niter=",
+            "description": "An integer (int or long). Number of iterations.",
+            "optional": true,
+            "default-value": 5
+        },
+        {
+            "id": "num_threads",
+            "name": "Num threads",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NUM_THREADS]",
+            "description": "An integer (int or long). Number of openmp threads to use.",
+            "optional": true,
+            "default-value": 1
+        },
+        {
+            "id": "nvoxhp",
+            "name": "Nvoxhp",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NVOXHP]",
+            "command-line-flag": "--nvoxhp=",
+            "description": "An integer (int or long). # of voxels used to estimate the hyperparameters.",
+            "optional": true,
+            "default-value": 1000
+        },
+        {
+            "id": "out_base",
+            "name": "Out base",
+            "type": "String",
+            "value-key": "[OUT_BASE]",
+            "command-line-flag": "--out=",
+            "description": "A unicode string. Basename for output (warped) image.",
+            "optional": true,
+            "default-value": "eddy_corrected"
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "repol",
+            "name": "Repol",
+            "type": "Flag",
+            "value-key": "[REPOL]",
+            "command-line-flag": "--repol",
+            "description": "A boolean. Detect and replace outlier slices.",
+            "optional": true
+        },
+        {
+            "id": "residuals",
+            "name": "Residuals",
+            "type": "Flag",
+            "value-key": "[RESIDUALS]",
+            "command-line-flag": "--residuals",
+            "description": "A boolean. Output residuals.",
+            "optional": true
+        },
+        {
+            "id": "session",
+            "name": "Session",
+            "type": "File",
+            "value-key": "[SESSION]",
+            "command-line-flag": "--session=",
+            "description": "An existing file name. File containing session indices for all volumes in --imain.",
+            "optional": true
+        },
+        {
+            "id": "slm",
+            "name": "Slm",
+            "type": "String",
+            "value-key": "[SLM]",
+            "command-line-flag": "--slm=",
+            "description": "'none' or 'linear' or 'quadratic'. Second level ec model.",
+            "optional": true,
+            "value-choices": [
+                "none",
+                "linear",
+                "quadratic"
+            ]
+        },
+        {
+            "id": "use_cuda",
+            "name": "Use cuda",
+            "type": "Flag",
+            "value-key": "[USE_CUDA]",
+            "command-line-flag": "--use_cuda",
+            "description": "A boolean. Run eddy using cuda gpu.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out cnr maps",
+            "id": "out_cnr_maps",
+            "path-template": "out_cnr_maps",
+            "optional": true,
+            "description": "An existing file name. Path/name of file with the cnr_maps."
+        },
+        {
+            "name": "Out corrected",
+            "id": "out_corrected",
+            "path-template": "eddy_corrected.nii.gz",
+            "optional": true,
+            "description": "An existing file name. 4d image file containing all the corrected volumes."
+        },
+        {
+            "name": "Out movement rms",
+            "id": "out_movement_rms",
+            "path-template": "out_movement_rms",
+            "optional": true,
+            "description": "An existing file name. Summary of the \"total movement\" in each volume."
+        },
+        {
+            "name": "Out outlier report",
+            "id": "out_outlier_report",
+            "path-template": "out_outlier_report",
+            "optional": true,
+            "description": "An existing file name. Text-file with a plain language report on what outlier slices eddy has found."
+        },
+        {
+            "name": "Out parameter",
+            "id": "out_parameter",
+            "path-template": "eddy_corrected.eddy_parameters",
+            "optional": true,
+            "description": "An existing file name. Text file with parameters definining the field andmovement for each scan."
+        },
+        {
+            "name": "Out residuals",
+            "id": "out_residuals",
+            "path-template": "out_residuals",
+            "optional": true,
+            "description": "An existing file name. Path/name of file with the residuals."
+        },
+        {
+            "name": "Out restricted movement rms",
+            "id": "out_restricted_movement_rms",
+            "path-template": "out_restricted_movement_rms",
+            "optional": true,
+            "description": "An existing file name. Summary of the \"total movement\" in each volume disregarding translation in the pe direction."
+        },
+        {
+            "name": "Out rotated bvecs",
+            "id": "out_rotated_bvecs",
+            "path-template": "out_rotated_bvecs",
+            "optional": true,
+            "description": "An existing file name. File containing rotated b-values for all volumes."
+        },
+        {
+            "name": "Out shell alignment parameters",
+            "id": "out_shell_alignment_parameters",
+            "path-template": "out_shell_alignment_parameters",
+            "optional": true,
+            "description": "An existing file name. File containing rigid body movement parameters between the different shells as estimated by a post-hoc mutual information based registration."
+        }
+    ],
+    "groups": [
+        {
+            "id": "all_or_none_group",
+            "name": "All or none group",
+            "members": [
+                "in_topup_fieldcoef",
+                "in_topup_movpar"
+            ],
+            "all-or-none": true
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

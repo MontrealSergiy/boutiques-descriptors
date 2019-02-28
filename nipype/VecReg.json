@@ -1,0 +1,150 @@
+{
+    "name": "VecReg",
+    "command-line": "nipype_cmd nipype.interfaces.fsl VecReg [AFFINE_MAT] [ARGS] [ENVIRON] [IN_FILE] [INTERPOLATION] [MASK] [OUT_FILE] [OUTPUT_TYPE] [REF_MASK] [REF_VOL] [ROTATION_MAT] [ROTATION_WARP] [WARP_FIELD]",
+    "description": "VecReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: VecReg).",
+    "inputs": [
+        {
+            "id": "affine_mat",
+            "name": "Affine mat",
+            "type": "File",
+            "value-key": "[AFFINE_MAT]",
+            "command-line-flag": "-t",
+            "description": "An existing file name. Filename for affine transformation matrix.",
+            "optional": true
+        },
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "command-line-flag": "-i",
+            "description": "An existing file name. Filename for input vector or tensor field.",
+            "optional": false
+        },
+        {
+            "id": "interpolation",
+            "name": "Interpolation",
+            "type": "String",
+            "value-key": "[INTERPOLATION]",
+            "command-line-flag": "--interp=",
+            "description": "'nearestneighbour' or 'trilinear' or 'sinc' or 'spline'. Interpolation method : nearestneighbour, trilinear (default), sinc or spline.",
+            "optional": true,
+            "value-choices": [
+                "nearestneighbour",
+                "trilinear",
+                "sinc",
+                "spline"
+            ]
+        },
+        {
+            "id": "mask",
+            "name": "Mask",
+            "type": "File",
+            "value-key": "[MASK]",
+            "command-line-flag": "-m",
+            "description": "An existing file name. Brain mask in input space.",
+            "optional": true
+        },
+        {
+            "id": "out_file",
+            "name": "Out file",
+            "type": "File",
+            "value-key": "[OUT_FILE]",
+            "command-line-flag": "-o",
+            "description": "A file name. Filename for output registered vector or tensor field.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "ref_mask",
+            "name": "Ref mask",
+            "type": "File",
+            "value-key": "[REF_MASK]",
+            "command-line-flag": "--refmask=",
+            "description": "An existing file name. Brain mask in output space (useful for speed up of nonlinear reg).",
+            "optional": true
+        },
+        {
+            "id": "ref_vol",
+            "name": "Ref vol",
+            "type": "File",
+            "value-key": "[REF_VOL]",
+            "command-line-flag": "-r",
+            "description": "An existing file name. Filename for reference (target) volume.",
+            "optional": false
+        },
+        {
+            "id": "rotation_mat",
+            "name": "Rotation mat",
+            "type": "File",
+            "value-key": "[ROTATION_MAT]",
+            "command-line-flag": "--rotmat=",
+            "description": "An existing file name. Filename for secondary affine matrix if set, this will be used for the rotation of the vector/tensor field.",
+            "optional": true
+        },
+        {
+            "id": "rotation_warp",
+            "name": "Rotation warp",
+            "type": "File",
+            "value-key": "[ROTATION_WARP]",
+            "command-line-flag": "--rotwarp=",
+            "description": "An existing file name. Filename for secondary warp field if set, this will be used for the rotation of the vector/tensor field.",
+            "optional": true
+        },
+        {
+            "id": "warp_field",
+            "name": "Warp field",
+            "type": "File",
+            "value-key": "[WARP_FIELD]",
+            "command-line-flag": "-w",
+            "description": "An existing file name. Filename for 4d warp field for nonlinear registration.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out file",
+            "id": "out_file_outfile",
+            "path-template": "[OUT_FILE]",
+            "optional": true,
+            "description": "An existing file name. Path/name of filename for the registered vector or tensor field."
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

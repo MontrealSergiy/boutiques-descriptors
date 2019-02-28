@@ -1,0 +1,102 @@
+{
+    "name": "MakeDyadicVectors",
+    "command-line": "nipype_cmd nipype.interfaces.fsl MakeDyadicVectors [ARGS] [ENVIRON] [MASK] [OUTPUT] [OUTPUT_TYPE] [PERC] [PHI_VOL] [THETA_VOL]",
+    "description": "MakeDyadicVectors, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MakeDyadicVectors).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "mask",
+            "name": "Mask",
+            "type": "File",
+            "value-key": "[MASK]",
+            "description": "An existing file name. No description provided.",
+            "optional": true
+        },
+        {
+            "id": "output",
+            "name": "Output",
+            "type": "File",
+            "value-key": "[OUTPUT]",
+            "description": "A file name. No description provided.",
+            "optional": true,
+            "default-value": "dyads"
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "perc",
+            "name": "Perc",
+            "type": "Number",
+            "value-key": "[PERC]",
+            "description": "A float. The {perc}% angle of the output cone of uncertainty (output will be in degrees).",
+            "optional": true
+        },
+        {
+            "id": "phi_vol",
+            "name": "Phi vol",
+            "type": "File",
+            "value-key": "[PHI_VOL]",
+            "description": "An existing file name. No description provided.",
+            "optional": false
+        },
+        {
+            "id": "theta_vol",
+            "name": "Theta vol",
+            "type": "File",
+            "value-key": "[THETA_VOL]",
+            "description": "An existing file name. No description provided.",
+            "optional": false
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Dispersion",
+            "id": "dispersion",
+            "path-template": "dyads_dispersion.nii",
+            "optional": true,
+            "description": "An existing file name. No description provided."
+        },
+        {
+            "name": "Dyads",
+            "id": "dyads",
+            "path-template": "dyads.nii",
+            "optional": true,
+            "description": "An existing file name. No description provided."
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

@@ -1,0 +1,250 @@
+{
+    "name": "PRELUDE",
+    "command-line": "nipype_cmd nipype.interfaces.fsl PRELUDE [ARGS] [COMPLEX_PHASE_FILE] [END] [ENVIRON] [LABEL_FILE] [LABELPROCESS2D] [MAGNITUDE_FILE] [MASK_FILE] [NUM_PARTITIONS] [OUTPUT_TYPE] [PHASE_FILE] [PROCESS2D] [PROCESS3D] [RAWPHASE_FILE] [REMOVERAMPS] [SAVEMASK_FILE] [START] [THRESHOLD] [UNWRAPPED_PHASE_FILE]",
+    "description": "PRELUDE, as implemented in Nipype (module: nipype.interfaces.fsl, interface: PRELUDE).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "complex_phase_file",
+            "name": "Complex phase file",
+            "type": "File",
+            "value-key": "[COMPLEX_PHASE_FILE]",
+            "command-line-flag": "--complex=",
+            "description": "An existing file name. Complex phase input volume.",
+            "optional": false
+        },
+        {
+            "id": "end",
+            "name": "End",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[END]",
+            "command-line-flag": "--end=",
+            "description": "An integer (int or long). Final image number to process (default inf).",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "label_file",
+            "name": "Label file",
+            "type": "File",
+            "value-key": "[LABEL_FILE]",
+            "command-line-flag": "--labels=",
+            "description": "A file name. Saving the area labels output.",
+            "optional": true
+        },
+        {
+            "id": "labelprocess2d",
+            "name": "Labelprocess2d",
+            "type": "Flag",
+            "value-key": "[LABELPROCESS2D]",
+            "command-line-flag": "--labelslices",
+            "description": "A boolean. Does label processing in 2d (slice at a time).",
+            "optional": true
+        },
+        {
+            "id": "magnitude_file",
+            "name": "Magnitude file",
+            "type": "File",
+            "value-key": "[MAGNITUDE_FILE]",
+            "command-line-flag": "--abs=",
+            "description": "An existing file name. File containing magnitude image.",
+            "optional": false
+        },
+        {
+            "id": "mask_file",
+            "name": "Mask file",
+            "type": "File",
+            "value-key": "[MASK_FILE]",
+            "command-line-flag": "--mask=",
+            "description": "An existing file name. Filename of mask input volume.",
+            "optional": true
+        },
+        {
+            "id": "num_partitions",
+            "name": "Num partitions",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[NUM_PARTITIONS]",
+            "command-line-flag": "--numphasesplit=",
+            "description": "An integer (int or long). Number of phase partitions to use.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "phase_file",
+            "name": "Phase file",
+            "type": "File",
+            "value-key": "[PHASE_FILE]",
+            "command-line-flag": "--phase=",
+            "description": "An existing file name. Raw phase file.",
+            "optional": false
+        },
+        {
+            "id": "process2d",
+            "name": "Process2d",
+            "type": "Flag",
+            "value-key": "[PROCESS2D]",
+            "command-line-flag": "--slices",
+            "description": "A boolean. Does all processing in 2d (slice at a time).",
+            "optional": true
+        },
+        {
+            "id": "process3d",
+            "name": "Process3d",
+            "type": "Flag",
+            "value-key": "[PROCESS3D]",
+            "command-line-flag": "--force3D",
+            "description": "A boolean. Forces all processing to be full 3d.",
+            "optional": true
+        },
+        {
+            "id": "rawphase_file",
+            "name": "Rawphase file",
+            "type": "File",
+            "value-key": "[RAWPHASE_FILE]",
+            "command-line-flag": "--rawphase=",
+            "description": "A file name. Saving the raw phase output.",
+            "optional": true
+        },
+        {
+            "id": "removeramps",
+            "name": "Removeramps",
+            "type": "Flag",
+            "value-key": "[REMOVERAMPS]",
+            "command-line-flag": "--removeramps",
+            "description": "A boolean. Remove phase ramps during unwrapping.",
+            "optional": true
+        },
+        {
+            "id": "savemask_file",
+            "name": "Savemask file",
+            "type": "File",
+            "value-key": "[SAVEMASK_FILE]",
+            "command-line-flag": "--savemask=",
+            "description": "A file name. Saving the mask volume.",
+            "optional": true
+        },
+        {
+            "id": "start",
+            "name": "Start",
+            "type": "Number",
+            "integer": true,
+            "value-key": "[START]",
+            "command-line-flag": "--start=",
+            "description": "An integer (int or long). First image number to process (default 0).",
+            "optional": true
+        },
+        {
+            "id": "threshold",
+            "name": "Threshold",
+            "type": "Number",
+            "value-key": "[THRESHOLD]",
+            "command-line-flag": "--thresh=",
+            "description": "A float. Intensity threshold for masking.",
+            "optional": true
+        },
+        {
+            "id": "unwrapped_phase_file",
+            "name": "Unwrapped phase file",
+            "type": "File",
+            "value-key": "[UNWRAPPED_PHASE_FILE]",
+            "command-line-flag": "--unwrap=",
+            "description": "A file name. File containing unwrapepd phase.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Unwrapped phase file",
+            "id": "unwrapped_phase_file_outfile",
+            "path-template": "[UNWRAPPED_PHASE_FILE]",
+            "optional": true,
+            "description": "An existing file name. Unwrapped phase file."
+        }
+    ],
+    "groups": [
+        {
+            "id": "mutex_group",
+            "name": "Mutex group",
+            "members": [
+                "complex_phase_file",
+                "magnitude_file",
+                "phase_file"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_2",
+            "name": "Mutex group 2",
+            "members": [
+                "complex_phase_file",
+                "magnitude_file"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_3",
+            "name": "Mutex group 3",
+            "members": [
+                "complex_phase_file",
+                "phase_file"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_4",
+            "name": "Mutex group 4",
+            "members": [
+                "process2d",
+                "labelprocess2d"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "mutex_group_5",
+            "name": "Mutex group 5",
+            "members": [
+                "process2d",
+                "process3d",
+                "labelprocess2d"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

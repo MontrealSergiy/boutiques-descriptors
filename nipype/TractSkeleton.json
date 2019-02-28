@@ -1,0 +1,196 @@
+{
+    "name": "TractSkeleton",
+    "command-line": "nipype_cmd nipype.interfaces.fsl TractSkeleton [ALT_DATA_FILE] [ALT_SKELETON] [ARGS] [DATA_FILE] [DISTANCE_MAP] [ENVIRON] [IN_FILE] [OUTPUT_TYPE] [PROJECT_DATA] [PROJECTED_DATA] [SEARCH_MASK_FILE] [SKELETON_FILE] [THRESHOLD] [USE_CINGULUM_MASK]",
+    "description": "TractSkeleton, as implemented in Nipype (module: nipype.interfaces.fsl, interface: TractSkeleton).",
+    "inputs": [
+        {
+            "id": "alt_data_file",
+            "name": "Alt data file",
+            "type": "File",
+            "value-key": "[ALT_DATA_FILE]",
+            "command-line-flag": "-a",
+            "description": "An existing file name. 4d non-fa data to project onto skeleton.",
+            "optional": true
+        },
+        {
+            "id": "alt_skeleton",
+            "name": "Alt skeleton",
+            "type": "File",
+            "value-key": "[ALT_SKELETON]",
+            "command-line-flag": "-s",
+            "description": "An existing file name. Alternate skeleton to use.",
+            "optional": true
+        },
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "data_file",
+            "name": "Data file",
+            "type": "File",
+            "value-key": "[DATA_FILE]",
+            "description": "An existing file name. 4d data to project onto skeleton (usually fa).",
+            "optional": true
+        },
+        {
+            "id": "distance_map",
+            "name": "Distance map",
+            "type": "File",
+            "value-key": "[DISTANCE_MAP]",
+            "description": "An existing file name. Distance map image.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "command-line-flag": "-i",
+            "description": "An existing file name. Input image (typcially mean fa volume).",
+            "optional": false
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "project_data",
+            "name": "Project data",
+            "type": "Flag",
+            "value-key": "[PROJECT_DATA]",
+            "command-line-flag": "-p",
+            "description": "A boolean. Project data onto skeleton.",
+            "optional": true
+        },
+        {
+            "id": "projected_data",
+            "name": "Projected data",
+            "type": "File",
+            "value-key": "[PROJECTED_DATA]",
+            "description": "A file name. Input data projected onto skeleton.",
+            "optional": true
+        },
+        {
+            "id": "search_mask_file",
+            "name": "Search mask file",
+            "type": "File",
+            "value-key": "[SEARCH_MASK_FILE]",
+            "description": "An existing file name. Mask in which to use alternate search rule.",
+            "optional": true
+        },
+        {
+            "id": "skeleton_file",
+            "name": "Skeleton file",
+            "type": "Flag",
+            "value-key": "[SKELETON_FILE]",
+            "command-line-flag": "-o",
+            "description": "A boolean or a file name. Write out skeleton image.",
+            "optional": true
+        },
+        {
+            "id": "skeleton_file_2",
+            "name": "Skeleton file",
+            "type": "File",
+            "value-key": "[SKELETON_FILE]",
+            "command-line-flag": "-o",
+            "description": "A boolean or a file name. Write out skeleton image.",
+            "optional": true
+        },
+        {
+            "id": "threshold",
+            "name": "Threshold",
+            "type": "Number",
+            "value-key": "[THRESHOLD]",
+            "description": "A float. Skeleton threshold value.",
+            "optional": true
+        },
+        {
+            "id": "use_cingulum_mask",
+            "name": "Use cingulum mask",
+            "type": "Flag",
+            "value-key": "[USE_CINGULUM_MASK]",
+            "command-line-flag": "--use_cingulum_mask",
+            "description": "A boolean. Perform alternate search using built-in cingulum mask.",
+            "optional": true,
+            "default-value": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Projected data",
+            "id": "projected_data_outfile",
+            "path-template": "[PROJECTED_DATA]",
+            "optional": true,
+            "description": "A file name. Input data projected onto skeleton."
+        },
+        {
+            "name": "Skeleton file",
+            "id": "skeleton_file_outfile",
+            "path-template": "[SKELETON_FILE]",
+            "optional": true,
+            "description": "A file name. Tract skeleton image."
+        }
+    ],
+    "groups": [
+        {
+            "id": "skeleton_file_group",
+            "name": "Skeleton file group",
+            "members": [
+                "skeleton_file",
+                "skeleton_file_2"
+            ],
+            "mutually-exclusive": true
+        },
+        {
+            "id": "all_or_none_group",
+            "name": "All or none group",
+            "members": [
+                "distance_map",
+                "project_data",
+                "data_file",
+                "threshold"
+            ],
+            "all-or-none": true
+        },
+        {
+            "id": "mutex_group",
+            "name": "Mutex group",
+            "members": [
+                "use_cingulum_mask",
+                "search_mask_file"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

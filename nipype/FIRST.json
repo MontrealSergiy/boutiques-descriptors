@@ -1,0 +1,178 @@
+{
+    "name": "FIRST",
+    "command-line": "nipype_cmd nipype.interfaces.fsl FIRST [AFFINE_FILE] [ARGS] [BRAIN_EXTRACTED] [ENVIRON] [IN_FILE] [LIST_OF_SPECIFIC_STRUCTURES] [METHOD] [METHOD_AS_NUMERICAL_THRESHOLD] [NO_CLEANUP] [OUT_FILE] [OUTPUT_TYPE] [VERBOSE]",
+    "description": "FIRST, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FIRST).",
+    "inputs": [
+        {
+            "id": "affine_file",
+            "name": "Affine file",
+            "type": "File",
+            "value-key": "[AFFINE_FILE]",
+            "command-line-flag": "-a",
+            "description": "An existing file name. Affine matrix to use (e.g. img2std.mat) (does not re-run registration).",
+            "optional": true
+        },
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "brain_extracted",
+            "name": "Brain extracted",
+            "type": "Flag",
+            "value-key": "[BRAIN_EXTRACTED]",
+            "command-line-flag": "-b",
+            "description": "A boolean. Input structural image is already brain-extracted.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "command-line-flag": "-i",
+            "description": "An existing file name. Input data file.",
+            "optional": false
+        },
+        {
+            "id": "list_of_specific_structures",
+            "name": "List of specific structures",
+            "type": "String",
+            "list": true,
+            "min-list-entries": 1,
+            "value-key": "[LIST_OF_SPECIFIC_STRUCTURES]",
+            "command-line-flag": "-s",
+            "description": "A list of at least 1 items which are a unicode string. Runs only on the specified structures (e.g. l_hipp, r_hippl_accu, r_accu, l_amyg, r_amygl_caud, r_caud, l_pall, r_palll_puta, r_puta, l_thal, r_thal, brstem.",
+            "optional": true
+        },
+        {
+            "id": "method",
+            "name": "Method",
+            "type": "String",
+            "value-key": "[METHOD]",
+            "command-line-flag": "-m",
+            "description": "'auto' or 'fast' or 'none'. Method must be one of auto, fast, none, or it can be entered using the 'method_as_numerical_threshold' input.",
+            "optional": true,
+            "default-value": "auto",
+            "value-choices": [
+                "auto",
+                "fast",
+                "none"
+            ]
+        },
+        {
+            "id": "method_as_numerical_threshold",
+            "name": "Method as numerical threshold",
+            "type": "Number",
+            "value-key": "[METHOD_AS_NUMERICAL_THRESHOLD]",
+            "command-line-flag": "-m",
+            "description": "A float. Specify a numerical threshold value or use the 'method' input to choose auto, fast, or none.",
+            "optional": true
+        },
+        {
+            "id": "no_cleanup",
+            "name": "No cleanup",
+            "type": "Flag",
+            "value-key": "[NO_CLEANUP]",
+            "command-line-flag": "-d",
+            "description": "A boolean. Input structural image is already brain-extracted.",
+            "optional": true
+        },
+        {
+            "id": "out_file",
+            "name": "Out file",
+            "type": "File",
+            "value-key": "[OUT_FILE]",
+            "command-line-flag": "-o",
+            "description": "A file name. Output data file.",
+            "optional": false,
+            "default-value": "segmented"
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "verbose",
+            "name": "Verbose",
+            "type": "Flag",
+            "value-key": "[VERBOSE]",
+            "command-line-flag": "-v",
+            "description": "A boolean. Use verbose logging.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Bvars",
+            "id": "bvars",
+            "path-template": "*.bvars",
+            "optional": true,
+            "description": "A list of items which are an existing file name. Bvars for each subcortical region.",
+            "list": true
+        },
+        {
+            "name": "Original segmentations",
+            "id": "original_segmentations",
+            "path-template": "segmented_all_fast_origsegs.nii.gz",
+            "optional": true,
+            "description": "An existing file name. 3d image file containing the segmented regions as integer values. uses cma labelling."
+        },
+        {
+            "name": "Segmentation file",
+            "id": "segmentation_file",
+            "path-template": "segmented_all_fast_firstseg.nii.gz",
+            "optional": true,
+            "description": "An existing file name. 4d image file containing a single volume per segmented region."
+        },
+        {
+            "name": "Vtk surfaces",
+            "id": "vtk_surfaces",
+            "path-template": "*.vtk",
+            "optional": true,
+            "description": "A list of items which are an existing file name. Vtk format meshes for each subcortical region.",
+            "list": true
+        }
+    ],
+    "groups": [
+        {
+            "id": "mutex_group",
+            "name": "Mutex group",
+            "members": [
+                "method_as_numerical_threshold",
+                "method"
+            ],
+            "mutually-exclusive": true
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

@@ -1,0 +1,272 @@
+{
+    "name": "EpiReg",
+    "command-line": "nipype_cmd nipype.interfaces.fsl EpiReg [ARGS] [ECHOSPACING] [ENVIRON] [EPI] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [OUT_BASE] [OUTPUT_TYPE] [PEDIR] [T1_BRAIN] [T1_HEAD] [WEIGHT_IMAGE] [WMSEG]",
+    "description": "EpiReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: EpiReg).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "echospacing",
+            "name": "Echospacing",
+            "type": "Number",
+            "value-key": "[ECHOSPACING]",
+            "command-line-flag": "--echospacing=",
+            "description": "A float. Effective epi echo spacing                                 (sometimes called dwell time) - in seconds.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "epi",
+            "name": "Epi",
+            "type": "File",
+            "value-key": "[EPI]",
+            "command-line-flag": "--epi=",
+            "description": "An existing file name. Epi image.",
+            "optional": false
+        },
+        {
+            "id": "fmap",
+            "name": "Fmap",
+            "type": "File",
+            "value-key": "[FMAP]",
+            "command-line-flag": "--fmap=",
+            "description": "An existing file name. Fieldmap image (in rad/s).",
+            "optional": true
+        },
+        {
+            "id": "fmapmag",
+            "name": "Fmapmag",
+            "type": "File",
+            "value-key": "[FMAPMAG]",
+            "command-line-flag": "--fmapmag=",
+            "description": "An existing file name. Fieldmap magnitude image - wholehead.",
+            "optional": true
+        },
+        {
+            "id": "fmapmagbrain",
+            "name": "Fmapmagbrain",
+            "type": "File",
+            "value-key": "[FMAPMAGBRAIN]",
+            "command-line-flag": "--fmapmagbrain=",
+            "description": "An existing file name. Fieldmap magnitude image - brain extracted.",
+            "optional": true
+        },
+        {
+            "id": "no_clean",
+            "name": "No clean",
+            "type": "Flag",
+            "value-key": "[NO_CLEAN]",
+            "command-line-flag": "--noclean",
+            "description": "A boolean. Do not clean up intermediate files.",
+            "optional": true,
+            "default-value": true
+        },
+        {
+            "id": "no_fmapreg",
+            "name": "No fmapreg",
+            "type": "Flag",
+            "value-key": "[NO_FMAPREG]",
+            "command-line-flag": "--nofmapreg",
+            "description": "A boolean. Do not perform registration of fmap to t1                         (use if fmap already registered).",
+            "optional": true
+        },
+        {
+            "id": "out_base",
+            "name": "Out base",
+            "type": "String",
+            "value-key": "[OUT_BASE]",
+            "command-line-flag": "--out=",
+            "description": "A string. Output base name.",
+            "optional": true,
+            "default-value": "epi2struct"
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "pedir",
+            "name": "Pedir",
+            "type": "String",
+            "value-key": "[PEDIR]",
+            "command-line-flag": "--pedir=",
+            "description": "'x' or 'y' or 'z' or '-x' or '-y' or '-z'. Phase encoding direction, dir = x/y/z/-x/-y/-z.",
+            "optional": true,
+            "value-choices": [
+                "x",
+                "y",
+                "z",
+                "-x",
+                "-y",
+                "-z"
+            ]
+        },
+        {
+            "id": "t1_brain",
+            "name": "T1 brain",
+            "type": "File",
+            "value-key": "[T1_BRAIN]",
+            "command-line-flag": "--t1brain=",
+            "description": "An existing file name. Brain extracted t1 image.",
+            "optional": false
+        },
+        {
+            "id": "t1_head",
+            "name": "T1 head",
+            "type": "File",
+            "value-key": "[T1_HEAD]",
+            "command-line-flag": "--t1=",
+            "description": "An existing file name. Wholehead t1 image.",
+            "optional": false
+        },
+        {
+            "id": "weight_image",
+            "name": "Weight image",
+            "type": "File",
+            "value-key": "[WEIGHT_IMAGE]",
+            "command-line-flag": "--weight=",
+            "description": "An existing file name. Weighting image (in t1 space).",
+            "optional": true
+        },
+        {
+            "id": "wmseg",
+            "name": "Wmseg",
+            "type": "File",
+            "value-key": "[WMSEG]",
+            "command-line-flag": "--wmseg=",
+            "description": "An existing file name. White matter segmentation of t1 image, has to be named                  like the t1brain and end on _wmseg.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Epi2str inv",
+            "id": "epi2str_inv",
+            "path-template": "epi2str_inv",
+            "optional": true,
+            "description": "An existing file name. Rigid structural-to-epi transform."
+        },
+        {
+            "name": "Epi2str mat",
+            "id": "epi2str_mat",
+            "path-template": "epi2struct.mat",
+            "optional": true,
+            "description": "An existing file name. Rigid epi-to-structural transform."
+        },
+        {
+            "name": "Fmap2epi mat",
+            "id": "fmap2epi_mat",
+            "path-template": "fmap2epi_mat",
+            "optional": true,
+            "description": "An existing file name. Rigid fieldmap-to-epi transform."
+        },
+        {
+            "name": "Fmap2str mat",
+            "id": "fmap2str_mat",
+            "path-template": "fmap2str_mat",
+            "optional": true,
+            "description": "An existing file name. Rigid fieldmap-to-structural transform."
+        },
+        {
+            "name": "Fmap epi",
+            "id": "fmap_epi",
+            "path-template": "fmap_epi",
+            "optional": true,
+            "description": "An existing file name. Fieldmap in epi space."
+        },
+        {
+            "name": "Fmap str",
+            "id": "fmap_str",
+            "path-template": "fmap_str",
+            "optional": true,
+            "description": "An existing file name. Fieldmap in structural space."
+        },
+        {
+            "name": "Fmapmag str",
+            "id": "fmapmag_str",
+            "path-template": "fmapmag_str",
+            "optional": true,
+            "description": "An existing file name. Fieldmap magnitude image in structural space."
+        },
+        {
+            "name": "Fullwarp",
+            "id": "fullwarp",
+            "path-template": "fullwarp",
+            "optional": true,
+            "description": "An existing file name. Warpfield to unwarp epi and transform into                     structural space."
+        },
+        {
+            "name": "Out 1vol",
+            "id": "out_1vol",
+            "path-template": "out_1vol",
+            "optional": true,
+            "description": "An existing file name. Unwarped and coregistered single volume."
+        },
+        {
+            "name": "Out file",
+            "id": "out_file",
+            "path-template": "epi2struct.nii.gz",
+            "optional": true,
+            "description": "An existing file name. Unwarped and coregistered epi input."
+        },
+        {
+            "name": "Seg",
+            "id": "seg",
+            "path-template": "epi2struct_fast_seg.nii.gz",
+            "optional": true,
+            "description": "An existing file name. White matter, gray matter, csf segmentation."
+        },
+        {
+            "name": "Shiftmap",
+            "id": "shiftmap",
+            "path-template": "shiftmap",
+            "optional": true,
+            "description": "An existing file name. Shiftmap in epi space."
+        },
+        {
+            "name": "Wmedge",
+            "id": "wmedge",
+            "path-template": "epi2struct_fast_wmedge.nii.gz",
+            "optional": true,
+            "description": "An existing file name. White matter edges for visualization."
+        },
+        {
+            "name": "Wmseg",
+            "id": "wmseg_outfile",
+            "path-template": "epi2struct_fast_wmseg.nii.gz",
+            "optional": true,
+            "description": "An existing file name. White matter segmentation used in flirt bbr."
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

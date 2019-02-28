@@ -1,0 +1,104 @@
+{
+    "name": "SigLoss",
+    "command-line": "nipype_cmd nipype.interfaces.fsl SigLoss [ARGS] [ECHO_TIME] [ENVIRON] [IN_FILE] [MASK_FILE] [OUT_FILE] [OUTPUT_TYPE] [SLICE_DIRECTION]",
+    "description": "SigLoss, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SigLoss).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "echo_time",
+            "name": "Echo time",
+            "type": "Number",
+            "value-key": "[ECHO_TIME]",
+            "command-line-flag": "--te=",
+            "description": "A float. Echo time in seconds.",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "command-line-flag": "-i",
+            "description": "An existing file name. B0 fieldmap file.",
+            "optional": false
+        },
+        {
+            "id": "mask_file",
+            "name": "Mask file",
+            "type": "File",
+            "value-key": "[MASK_FILE]",
+            "command-line-flag": "-m",
+            "description": "An existing file name. Brain mask file.",
+            "optional": true
+        },
+        {
+            "id": "out_file",
+            "name": "Out file",
+            "type": "File",
+            "value-key": "[OUT_FILE]",
+            "command-line-flag": "-s",
+            "description": "A file name. Output signal loss estimate file.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "slice_direction",
+            "name": "Slice direction",
+            "type": "String",
+            "value-key": "[SLICE_DIRECTION]",
+            "command-line-flag": "-d",
+            "description": "'x' or 'y' or 'z'. Slicing direction.",
+            "optional": true,
+            "value-choices": [
+                "x",
+                "y",
+                "z"
+            ]
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out file",
+            "id": "out_file_outfile",
+            "path-template": "[OUT_FILE]",
+            "optional": true,
+            "description": "An existing file name. Signal loss estimate file."
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

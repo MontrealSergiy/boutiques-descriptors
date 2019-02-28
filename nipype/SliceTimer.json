@@ -1,0 +1,141 @@
+{
+    "name": "SliceTimer",
+    "command-line": "nipype_cmd nipype.interfaces.fsl SliceTimer [ARGS] [CUSTOM_ORDER] [CUSTOM_TIMINGS] [ENVIRON] [GLOBAL_SHIFT] [IN_FILE] [INDEX_DIR] [INTERLEAVED] [OUT_FILE] [OUTPUT_TYPE] [SLICE_DIRECTION] [TIME_REPETITION]",
+    "description": "SliceTimer, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SliceTimer).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "custom_order",
+            "name": "Custom order",
+            "type": "File",
+            "value-key": "[CUSTOM_ORDER]",
+            "command-line-flag": "--ocustom=",
+            "description": "An existing file name. Filename of single-column custom interleave order file (first slice is referred to as 1 not 0).",
+            "optional": true
+        },
+        {
+            "id": "custom_timings",
+            "name": "Custom timings",
+            "type": "File",
+            "value-key": "[CUSTOM_TIMINGS]",
+            "command-line-flag": "--tcustom=",
+            "description": "An existing file name. Slice timings, in fractions of tr, range 0:1 (default is 0.5 = no shift).",
+            "optional": true
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "global_shift",
+            "name": "Global shift",
+            "type": "Number",
+            "value-key": "[GLOBAL_SHIFT]",
+            "command-line-flag": "--tglobal",
+            "description": "A float. Shift in fraction of tr, range 0:1 (default is 0.5 = no shift).",
+            "optional": true
+        },
+        {
+            "id": "in_file",
+            "name": "In file",
+            "type": "File",
+            "value-key": "[IN_FILE]",
+            "command-line-flag": "--in=",
+            "description": "An existing file name. Filename of input timeseries.",
+            "optional": false
+        },
+        {
+            "id": "index_dir",
+            "name": "Index dir",
+            "type": "Flag",
+            "value-key": "[INDEX_DIR]",
+            "command-line-flag": "--down",
+            "description": "A boolean. Slice indexing from top to bottom.",
+            "optional": true
+        },
+        {
+            "id": "interleaved",
+            "name": "Interleaved",
+            "type": "Flag",
+            "value-key": "[INTERLEAVED]",
+            "command-line-flag": "--odd",
+            "description": "A boolean. Use interleaved acquisition.",
+            "optional": true
+        },
+        {
+            "id": "out_file",
+            "name": "Out file",
+            "type": "File",
+            "value-key": "[OUT_FILE]",
+            "command-line-flag": "--out=",
+            "description": "A file name. Filename of output timeseries.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "slice_direction",
+            "name": "Slice direction",
+            "type": "Number",
+            "value-key": "[SLICE_DIRECTION]",
+            "command-line-flag": "--direction=",
+            "description": "1 or 2 or 3. Direction of slice acquisition (x=1, y=2, z=3) - default is z.",
+            "optional": true,
+            "integer": true,
+            "value-choices": [
+                1,
+                2,
+                3
+            ]
+        },
+        {
+            "id": "time_repetition",
+            "name": "Time repetition",
+            "type": "Number",
+            "value-key": "[TIME_REPETITION]",
+            "command-line-flag": "--repeat=",
+            "description": "A float. Specify tr of data - default is 3s.",
+            "optional": true
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Slice time corrected file",
+            "id": "slice_time_corrected_file",
+            "path-template": "slice_time_corrected_file",
+            "optional": true,
+            "description": "An existing file name. Slice time corrected file."
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}

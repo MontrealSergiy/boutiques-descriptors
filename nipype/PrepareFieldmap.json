@@ -1,0 +1,106 @@
+{
+    "name": "PrepareFieldmap",
+    "command-line": "nipype_cmd nipype.interfaces.fsl PrepareFieldmap [ARGS] [DELTA_TE] [ENVIRON] [IN_MAGNITUDE] [IN_PHASE] [NOCHECK] [OUT_FIELDMAP] [OUTPUT_TYPE] [SCANNER]",
+    "description": "PrepareFieldmap, as implemented in Nipype (module: nipype.interfaces.fsl, interface: PrepareFieldmap).",
+    "inputs": [
+        {
+            "id": "args",
+            "name": "Args",
+            "type": "String",
+            "value-key": "[ARGS]",
+            "description": "A unicode string. Additional parameters to the command.",
+            "optional": true
+        },
+        {
+            "id": "delta_TE",
+            "name": "Delta te",
+            "type": "Number",
+            "value-key": "[DELTA_TE]",
+            "description": "A float. Echo time difference of the fieldmap sequence in ms. (usually 2.46ms in siemens).",
+            "optional": false,
+            "default-value": 2.46
+        },
+        {
+            "id": "environ",
+            "name": "Environ",
+            "type": "String",
+            "value-key": "[ENVIRON]",
+            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
+            "optional": true,
+            "default-value": {}
+        },
+        {
+            "id": "in_magnitude",
+            "name": "In magnitude",
+            "type": "File",
+            "value-key": "[IN_MAGNITUDE]",
+            "description": "An existing file name. Magnitude difference map, brain extracted.",
+            "optional": false
+        },
+        {
+            "id": "in_phase",
+            "name": "In phase",
+            "type": "File",
+            "value-key": "[IN_PHASE]",
+            "description": "An existing file name. Phase difference map, in siemens format range from 0-4096 or 0-8192).",
+            "optional": false
+        },
+        {
+            "id": "nocheck",
+            "name": "Nocheck",
+            "type": "Flag",
+            "value-key": "[NOCHECK]",
+            "command-line-flag": "--nocheck",
+            "description": "A boolean. Do not perform sanity checks for image size/range/dimensions.",
+            "optional": true,
+            "default-value": false
+        },
+        {
+            "id": "out_fieldmap",
+            "name": "Out fieldmap",
+            "type": "File",
+            "value-key": "[OUT_FIELDMAP]",
+            "description": "A file name. Output name for prepared fieldmap.",
+            "optional": true
+        },
+        {
+            "id": "output_type",
+            "name": "Output type",
+            "type": "String",
+            "value-key": "[OUTPUT_TYPE]",
+            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
+            "optional": true,
+            "value-choices": [
+                "NIFTI",
+                "NIFTI_PAIR",
+                "NIFTI_GZ",
+                "NIFTI_PAIR_GZ"
+            ]
+        },
+        {
+            "id": "scanner",
+            "name": "Scanner",
+            "type": "String",
+            "value-key": "[SCANNER]",
+            "description": "A string. Must be siemens.",
+            "optional": true,
+            "default-value": "SIEMENS"
+        }
+    ],
+    "output-files": [
+        {
+            "name": "Out fieldmap",
+            "id": "out_fieldmap_outfile",
+            "path-template": "[OUT_FIELDMAP]",
+            "optional": true,
+            "description": "An existing file name. Output name for prepared fieldmap."
+        }
+    ],
+    "tool-version": "No version provided.",
+    "schema-version": "0.5",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "type": "docker",
+        "index": "index.docker.io"
+    }
+}
