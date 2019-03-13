@@ -1,16 +1,9 @@
 {
     "name": "SliceTimer",
-    "command-line": "nipype_cmd nipype.interfaces.fsl SliceTimer [ARGS] [CUSTOM_ORDER] [CUSTOM_TIMINGS] [ENVIRON] [GLOBAL_SHIFT] [IN_FILE] [INDEX_DIR] [INTERLEAVED] [OUT_FILE] [OUTPUT_TYPE] [SLICE_DIRECTION] [TIME_REPETITION]",
+    "command-line": "SliceTimer [CUSTOM_ORDER] [CUSTOM_TIMINGS] [GLOBAL_SHIFT] [IN_FILE] [INDEX_DIR] [INTERLEAVED] [OUT_FILE] [SLICE_DIRECTION] [TIME_REPETITION]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "SliceTimer, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SliceTimer).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "custom_order",
             "name": "Custom order",
@@ -28,15 +21,6 @@
             "command-line-flag": "--tcustom=",
             "description": "An existing file name. Slice timings, in fractions of tr, range 0:1 (default is 0.5 = no shift).",
             "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "global_shift",
@@ -82,20 +66,6 @@
             "command-line-flag": "--out=",
             "description": "A file name. Filename of output timeseries.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "slice_direction",

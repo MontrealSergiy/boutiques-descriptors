@@ -1,16 +1,9 @@
 {
     "name": "DistanceMap",
-    "command-line": "nipype_cmd nipype.interfaces.fsl DistanceMap [ARGS] [DISTANCE_MAP] [ENVIRON] [IN_FILE] [INVERT_INPUT] [LOCAL_MAX_FILE] [MASK_FILE] [OUTPUT_TYPE]",
+    "command-line": "DistanceMap [DISTANCE_MAP] [IN_FILE] [INVERT_INPUT] [LOCAL_MAX_FILE] [MASK_FILE]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "DistanceMap, as implemented in Nipype (module: nipype.interfaces.fsl, interface: DistanceMap).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "distance_map",
             "name": "Distance map",
@@ -19,15 +12,6 @@
             "command-line-flag": "--out=",
             "description": "A file name. Distance map to write.",
             "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "in_file",
@@ -73,20 +57,6 @@
             "command-line-flag": "--mask=",
             "description": "An existing file name. Binary mask to contrain calculations.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         }
     ],
     "output-files": [

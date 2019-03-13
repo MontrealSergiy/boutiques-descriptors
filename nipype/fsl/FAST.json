@@ -1,16 +1,9 @@
 {
     "name": "FAST",
-    "command-line": "nipype_cmd nipype.interfaces.fsl FAST [ARGS] [BIAS_ITERS] [BIAS_LOWPASS] [ENVIRON] [HYPER] [IMG_TYPE] [IN_FILES] [INIT_SEG_SMOOTH] [INIT_TRANSFORM] [ITERS_AFTERBIAS] [MANUAL_SEG] [MIXEL_SMOOTH] [NO_BIAS] [NO_PVE] [NUMBER_CLASSES] [OTHER_PRIORS] [OUT_BASENAME] [OUTPUT_BIASCORRECTED] [OUTPUT_BIASFIELD] [OUTPUT_TYPE] [PROBABILITY_MAPS] [SEGMENT_ITERS] [SEGMENTS] [USE_PRIORS] [VERBOSE]",
+    "command-line": "FAST [BIAS_ITERS] [BIAS_LOWPASS] [HYPER] [IMG_TYPE] [IN_FILES] [INIT_SEG_SMOOTH] [INIT_TRANSFORM] [ITERS_AFTERBIAS] [MANUAL_SEG] [MIXEL_SMOOTH] [NO_BIAS] [NO_PVE] [NUMBER_CLASSES] [OTHER_PRIORS] [OUT_BASENAME] [OUTPUT_BIASCORRECTED] [OUTPUT_BIASFIELD] [PROBABILITY_MAPS] [SEGMENT_ITERS] [SEGMENTS] [USE_PRIORS] [VERBOSE]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "FAST, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FAST).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "bias_iters",
             "name": "Bias iters",
@@ -32,15 +25,6 @@
             "command-line-flag": "-l",
             "description": "4 <= a long integer <= 40. Bias field smoothing extent (fwhm) in mm.",
             "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "hyper",
@@ -193,20 +177,6 @@
             "command-line-flag": "-b",
             "description": "A boolean. Output estimated bias field.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "probability_maps",

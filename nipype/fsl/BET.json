@@ -1,16 +1,9 @@
 {
     "name": "BET",
-    "command-line": "nipype_cmd nipype.interfaces.fsl BET [ARGS] [CENTER] [ENVIRON] [FRAC] [FUNCTIONAL] [IN_FILE] [MASK] [MESH] [NO_OUTPUT] [OUT_FILE] [OUTLINE] [OUTPUT_TYPE] [PADDING] [RADIUS] [REDUCE_BIAS] [REMOVE_EYES] [ROBUST] [SKULL] [SURFACES] [T2_GUIDED] [THRESHOLD] [VERTICAL_GRADIENT]",
+    "command-line": "BET [CENTER] [FRAC] [FUNCTIONAL] [IN_FILE] [MASK] [MESH] [NO_OUTPUT] [OUT_FILE] [OUTLINE] [PADDING] [RADIUS] [REDUCE_BIAS] [REMOVE_EYES] [ROBUST] [SKULL] [SURFACES] [T2_GUIDED] [THRESHOLD] [VERTICAL_GRADIENT]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "BET, as implemented in Nipype (module: nipype.interfaces.fsl, interface: BET).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "center",
             "name": "Center",
@@ -22,15 +15,6 @@
             "command-line-flag": "-c",
             "description": "A list of at most 3 items which are an integer (int or long). Center of gravity in voxels.",
             "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "frac",
@@ -101,20 +85,6 @@
             "command-line-flag": "-o",
             "description": "A boolean. Create surface outline image.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "padding",
@@ -293,12 +263,12 @@
             "name": "Mutex group",
             "members": [
                 "t2_guided",
-                "padding",
                 "reduce_bias",
                 "robust",
-                "remove_eyes",
                 "functional",
-                "surfaces"
+                "padding",
+                "surfaces",
+                "remove_eyes"
             ],
             "mutually-exclusive": true
         }

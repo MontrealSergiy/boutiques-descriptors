@@ -1,6 +1,7 @@
 {
     "name": "FIRST",
-    "command-line": "nipype_cmd nipype.interfaces.fsl FIRST [AFFINE_FILE] [ARGS] [BRAIN_EXTRACTED] [ENVIRON] [IN_FILE] [LIST_OF_SPECIFIC_STRUCTURES] [METHOD] [METHOD_AS_NUMERICAL_THRESHOLD] [NO_CLEANUP] [OUT_FILE] [OUTPUT_TYPE] [VERBOSE]",
+    "command-line": "FIRST [AFFINE_FILE] [BRAIN_EXTRACTED] [IN_FILE] [LIST_OF_SPECIFIC_STRUCTURES] [METHOD] [METHOD_AS_NUMERICAL_THRESHOLD] [NO_CLEANUP] [OUT_FILE] [VERBOSE]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "FIRST, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FIRST).",
     "inputs": [
         {
@@ -13,14 +14,6 @@
             "optional": true
         },
         {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
             "id": "brain_extracted",
             "name": "Brain extracted",
             "type": "Flag",
@@ -28,15 +21,6 @@
             "command-line-flag": "-b",
             "description": "A boolean. Input structural image is already brain-extracted.",
             "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "in_file",
@@ -102,20 +86,6 @@
             "default-value": "segmented"
         },
         {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
-        },
-        {
             "id": "verbose",
             "name": "Verbose",
             "type": "Flag",
@@ -162,8 +132,8 @@
             "id": "mutex_group",
             "name": "Mutex group",
             "members": [
-                "method_as_numerical_threshold",
-                "method"
+                "method",
+                "method_as_numerical_threshold"
             ],
             "mutually-exclusive": true
         }

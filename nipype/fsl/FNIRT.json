@@ -1,6 +1,7 @@
 {
     "name": "FNIRT",
-    "command-line": "nipype_cmd nipype.interfaces.fsl FNIRT [AFFINE_FILE] [APPLY_INMASK] [APPLY_INTENSITY_MAPPING] [APPLY_REFMASK] [ARGS] [BIAS_REGULARIZATION_LAMBDA] [BIASFIELD_RESOLUTION] [CONFIG_FILE] [DERIVE_FROM_REF] [ENVIRON] [FIELD_FILE] [FIELDCOEFF_FILE] [HESSIAN_PRECISION] [IN_FILE] [IN_FWHM] [IN_INTENSITYMAP_FILE] [INMASK_FILE] [INMASK_VAL] [INTENSITY_MAPPING_MODEL] [INTENSITY_MAPPING_ORDER] [INWARP_FILE] [JACOBIAN_FILE] [JACOBIAN_RANGE] [LOG_FILE] [MAX_NONLIN_ITER] [MODULATEDREF_FILE] [OUT_INTENSITYMAP_FILE] [OUTPUT_TYPE] [REF_FILE] [REF_FWHM] [REFMASK_FILE] [REFMASK_VAL] [REGULARIZATION_LAMBDA] [REGULARIZATION_MODEL] [SKIP_IMPLICIT_IN_MASKING] [SKIP_IMPLICIT_REF_MASKING] [SKIP_INMASK] [SKIP_INTENSITY_MAPPING] [SKIP_LAMBDA_SSQ] [SKIP_REFMASK] [SPLINE_ORDER] [SUBSAMPLING_SCHEME] [WARP_RESOLUTION] [WARPED_FILE]",
+    "command-line": "FNIRT [AFFINE_FILE] [APPLY_INMASK] [APPLY_INTENSITY_MAPPING] [APPLY_REFMASK] [BIAS_REGULARIZATION_LAMBDA] [BIASFIELD_RESOLUTION] [CONFIG_FILE] [DERIVE_FROM_REF] [FIELD_FILE] [FIELDCOEFF_FILE] [HESSIAN_PRECISION] [IN_FILE] [IN_FWHM] [IN_INTENSITYMAP_FILE] [INMASK_FILE] [INMASK_VAL] [INTENSITY_MAPPING_MODEL] [INTENSITY_MAPPING_ORDER] [INWARP_FILE] [JACOBIAN_FILE] [JACOBIAN_RANGE] [LOG_FILE] [MAX_NONLIN_ITER] [MODULATEDREF_FILE] [OUT_INTENSITYMAP_FILE] [REF_FILE] [REF_FWHM] [REFMASK_FILE] [REFMASK_VAL] [REGULARIZATION_LAMBDA] [REGULARIZATION_MODEL] [SKIP_IMPLICIT_IN_MASKING] [SKIP_IMPLICIT_REF_MASKING] [SKIP_INMASK] [SKIP_INTENSITY_MAPPING] [SKIP_LAMBDA_SSQ] [SKIP_REFMASK] [SPLINE_ORDER] [SUBSAMPLING_SCHEME] [WARP_RESOLUTION] [WARPED_FILE]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "FNIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FNIRT).",
     "inputs": [
         {
@@ -40,14 +41,6 @@
             "value-key": "[APPLY_REFMASK]",
             "command-line-flag": "--applyrefmask=",
             "description": "A list of items which are 0 or 1. List of iterations to use reference mask on (1 to use, 0 to skip).",
-            "optional": true
-        },
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
             "optional": true
         },
         {
@@ -98,15 +91,6 @@
             "command-line-flag": "--refderiv",
             "description": "A boolean. If true, ref image is used to calculate derivatives. default false.",
             "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "field_file",
@@ -325,20 +309,6 @@
             "command-line-flag": "--intout=",
             "description": "A boolean or a file name. Name of files for writing information pertaining to intensity mapping.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "ref_file",

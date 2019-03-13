@@ -1,16 +1,9 @@
 {
     "name": "PrepareFieldmap",
-    "command-line": "nipype_cmd nipype.interfaces.fsl PrepareFieldmap [ARGS] [DELTA_TE] [ENVIRON] [IN_MAGNITUDE] [IN_PHASE] [NOCHECK] [OUT_FIELDMAP] [OUTPUT_TYPE] [SCANNER]",
+    "command-line": "PrepareFieldmap [DELTA_TE] [IN_MAGNITUDE] [IN_PHASE] [NOCHECK] [OUT_FIELDMAP] [SCANNER]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "PrepareFieldmap, as implemented in Nipype (module: nipype.interfaces.fsl, interface: PrepareFieldmap).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "delta_TE",
             "name": "Delta te",
@@ -19,15 +12,6 @@
             "description": "A float. Echo time difference of the fieldmap sequence in ms. (usually 2.46ms in siemens).",
             "optional": false,
             "default-value": 2.46
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "in_magnitude",
@@ -62,20 +46,6 @@
             "value-key": "[OUT_FIELDMAP]",
             "description": "A file name. Output name for prepared fieldmap.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "scanner",

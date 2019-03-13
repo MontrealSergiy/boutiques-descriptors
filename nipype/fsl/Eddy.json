@@ -1,16 +1,9 @@
 {
     "name": "Eddy",
-    "command-line": "nipype_cmd nipype.interfaces.fsl Eddy [ARGS] [CNR_MAPS] [DONT_PEAS] [DONT_SEP_OFFS_MOVE] [ENVIRON] [FEP] [FIELD] [FIELD_MAT] [FLM] [FUDGE_FACTOR] [FWHM] [IN_ACQP] [IN_BVAL] [IN_BVEC] [IN_FILE] [IN_INDEX] [IN_MASK] [IN_TOPUP_FIELDCOEF] [IN_TOPUP_MOVPAR] [INTERP] [IS_SHELLED] [METHOD] [NITER] [NUM_THREADS] [NVOXHP] [OUT_BASE] [OUTPUT_TYPE] [REPOL] [RESIDUALS] [SESSION] [SLM] [USE_CUDA]",
+    "command-line": "Eddy [CNR_MAPS] [DONT_PEAS] [DONT_SEP_OFFS_MOVE] [FEP] [FIELD] [FIELD_MAT] [FLM] [FUDGE_FACTOR] [FWHM] [IN_ACQP] [IN_BVAL] [IN_BVEC] [IN_FILE] [IN_INDEX] [IN_MASK] [IN_TOPUP_FIELDCOEF] [IN_TOPUP_MOVPAR] [INTERP] [IS_SHELLED] [METHOD] [NITER] [NUM_THREADS] [NVOXHP] [OUT_BASE] [REPOL] [RESIDUALS] [SESSION] [SLM] [USE_CUDA]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "Eddy, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Eddy).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "cnr_maps",
             "name": "Cnr maps",
@@ -37,15 +30,6 @@
             "command-line-flag": "--dont_sep_offs_move",
             "description": "A boolean. Do not attempt to separate field offset from subject movement.",
             "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "fep",
@@ -256,20 +240,6 @@
             "default-value": "eddy_corrected"
         },
         {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
-        },
-        {
             "id": "repol",
             "name": "Repol",
             "type": "Flag",
@@ -390,8 +360,8 @@
             "id": "all_or_none_group",
             "name": "All or none group",
             "members": [
-                "in_topup_fieldcoef",
-                "in_topup_movpar"
+                "in_topup_movpar",
+                "in_topup_fieldcoef"
             ],
             "all-or-none": true
         }

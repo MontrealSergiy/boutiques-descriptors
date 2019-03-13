@@ -1,16 +1,9 @@
 {
     "name": "DTIFit",
-    "command-line": "nipype_cmd nipype.interfaces.fsl DTIFit [ARGS] [BASE_NAME] [BVALS] [BVECS] [CNI] [DWI] [ENVIRON] [GRADNONLIN] [LITTLE_BIT] [MASK] [MAX_X] [MAX_Y] [MAX_Z] [MIN_X] [MIN_Y] [MIN_Z] [OUTPUT_TYPE] [SAVE_TENSOR] [SSE]",
+    "command-line": "DTIFit [BASE_NAME] [BVALS] [BVECS] [CNI] [DWI] [GRADNONLIN] [LITTLE_BIT] [MASK] [MAX_X] [MAX_Y] [MAX_Z] [MIN_X] [MIN_Y] [MIN_Z] [SAVE_TENSOR] [SSE]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "DTIFit, as implemented in Nipype (module: nipype.interfaces.fsl, interface: DTIFit).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "base_name",
             "name": "Base name",
@@ -56,15 +49,6 @@
             "command-line-flag": "-k",
             "description": "An existing file name. Diffusion weighted image data file.",
             "optional": false
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "gradnonlin",
@@ -152,20 +136,6 @@
             "command-line-flag": "-z",
             "description": "An integer (int or long). Min z.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "save_tensor",

@@ -1,16 +1,9 @@
 {
     "name": "ApplyTOPUP",
-    "command-line": "nipype_cmd nipype.interfaces.fsl ApplyTOPUP [ARGS] [DATATYPE] [ENCODING_FILE] [ENVIRON] [IN_FILES] [IN_INDEX] [IN_TOPUP_FIELDCOEF] [IN_TOPUP_MOVPAR] [INTERP] [METHOD] [OUT_CORRECTED] [OUTPUT_TYPE]",
+    "command-line": "ApplyTOPUP [DATATYPE] [ENCODING_FILE] [IN_FILES] [IN_INDEX] [IN_TOPUP_FIELDCOEF] [IN_TOPUP_MOVPAR] [INTERP] [METHOD] [OUT_CORRECTED]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "ApplyTOPUP, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ApplyTOPUP).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "datatype",
             "name": "Datatype",
@@ -35,15 +28,6 @@
             "command-line-flag": "--datain=",
             "description": "An existing file name. Name of text file with pe directions/times.",
             "optional": false
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "in_files",
@@ -108,38 +92,17 @@
                 "jac",
                 "lsr"
             ]
-        },
-        {
-            "id": "out_corrected",
-            "name": "Out corrected",
-            "type": "File",
-            "value-key": "[OUT_CORRECTED]",
-            "command-line-flag": "--out=",
-            "description": "A file name. Output (warped) image.",
-            "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         }
     ],
     "output-files": [
         {
             "name": "Out corrected",
-            "id": "out_corrected_outfile",
-            "path-template": "[OUT_CORRECTED]",
+            "id": "out_corrected",
+            "path-template": "[IN_FILES]_corrected",
             "optional": true,
-            "description": "An existing file name. Name of 4d image file with unwarped images."
+            "description": "An existing file name. Name of 4d image file with unwarped images.",
+            "value-key": "[OUT_CORRECTED]",
+            "command-line-flag": "--out="
         }
     ],
     "groups": [
@@ -147,8 +110,8 @@
             "id": "all_or_none_group",
             "name": "All or none group",
             "members": [
-                "in_topup_fieldcoef",
-                "in_topup_movpar"
+                "in_topup_movpar",
+                "in_topup_fieldcoef"
             ],
             "all-or-none": true
         }

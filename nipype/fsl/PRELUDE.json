@@ -1,16 +1,9 @@
 {
     "name": "PRELUDE",
-    "command-line": "nipype_cmd nipype.interfaces.fsl PRELUDE [ARGS] [COMPLEX_PHASE_FILE] [END] [ENVIRON] [LABEL_FILE] [LABELPROCESS2D] [MAGNITUDE_FILE] [MASK_FILE] [NUM_PARTITIONS] [OUTPUT_TYPE] [PHASE_FILE] [PROCESS2D] [PROCESS3D] [RAWPHASE_FILE] [REMOVERAMPS] [SAVEMASK_FILE] [START] [THRESHOLD] [UNWRAPPED_PHASE_FILE]",
+    "command-line": "PRELUDE [COMPLEX_PHASE_FILE] [END] [LABEL_FILE] [LABELPROCESS2D] [MAGNITUDE_FILE] [MASK_FILE] [NUM_PARTITIONS] [PHASE_FILE] [PROCESS2D] [PROCESS3D] [RAWPHASE_FILE] [REMOVERAMPS] [SAVEMASK_FILE] [START] [THRESHOLD] [UNWRAPPED_PHASE_FILE]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "PRELUDE, as implemented in Nipype (module: nipype.interfaces.fsl, interface: PRELUDE).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "complex_phase_file",
             "name": "Complex phase file",
@@ -29,15 +22,6 @@
             "command-line-flag": "--end=",
             "description": "An integer (int or long). Final image number to process (default inf).",
             "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "label_file",
@@ -84,20 +68,6 @@
             "command-line-flag": "--numphasesplit=",
             "description": "An integer (int or long). Number of phase partitions to use.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "phase_file",
@@ -224,8 +194,8 @@
             "id": "mutex_group_4",
             "name": "Mutex group 4",
             "members": [
-                "process2d",
-                "labelprocess2d"
+                "labelprocess2d",
+                "process2d"
             ],
             "mutually-exclusive": true
         },
@@ -233,9 +203,9 @@
             "id": "mutex_group_5",
             "name": "Mutex group 5",
             "members": [
-                "process2d",
+                "labelprocess2d",
                 "process3d",
-                "labelprocess2d"
+                "process2d"
             ],
             "mutually-exclusive": true
         }

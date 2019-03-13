@@ -1,16 +1,9 @@
 {
     "name": "FUGUE",
-    "command-line": "nipype_cmd nipype.interfaces.fsl FUGUE [ARGS] [ASYM_SE_TIME] [DESPIKE_2DFILTER] [DESPIKE_THRESHOLD] [DWELL_TIME] [DWELL_TO_ASYM_RATIO] [ENVIRON] [FMAP_IN_FILE] [FMAP_OUT_FILE] [FORWARD_WARPING] [FOURIER_ORDER] [ICORR] [ICORR_ONLY] [IN_FILE] [MASK_FILE] [MEDIAN_2DFILTER] [NO_EXTEND] [NO_GAP_FILL] [NOKSPACE] [OUTPUT_TYPE] [PAVA] [PHASE_CONJUGATE] [PHASEMAP_IN_FILE] [POLY_ORDER] [SAVE_FMAP] [SAVE_SHIFT] [SAVE_UNMASKED_FMAP] [SAVE_UNMASKED_SHIFT] [SHIFT_IN_FILE] [SHIFT_OUT_FILE] [SMOOTH2D] [SMOOTH3D] [UNWARP_DIRECTION] [UNWARPED_FILE] [WARPED_FILE]",
+    "command-line": "FUGUE [ASYM_SE_TIME] [DESPIKE_2DFILTER] [DESPIKE_THRESHOLD] [DWELL_TIME] [DWELL_TO_ASYM_RATIO] [FMAP_IN_FILE] [FMAP_OUT_FILE] [FORWARD_WARPING] [FOURIER_ORDER] [ICORR] [ICORR_ONLY] [IN_FILE] [MASK_FILE] [MEDIAN_2DFILTER] [NO_EXTEND] [NO_GAP_FILL] [NOKSPACE] [PAVA] [PHASE_CONJUGATE] [PHASEMAP_IN_FILE] [POLY_ORDER] [SAVE_FMAP] [SAVE_SHIFT] [SAVE_UNMASKED_FMAP] [SAVE_UNMASKED_SHIFT] [SHIFT_IN_FILE] [SHIFT_OUT_FILE] [SMOOTH2D] [SMOOTH3D] [UNWARP_DIRECTION] [UNWARPED_FILE] [WARPED_FILE]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "FUGUE, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FUGUE).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "asym_se_time",
             "name": "Asym se time",
@@ -55,15 +48,6 @@
             "command-line-flag": "--dwelltoasym=",
             "description": "A float. Set the dwell to asym time ratio.",
             "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "fmap_in_file",
@@ -174,20 +158,6 @@
             "command-line-flag": "--nokspace",
             "description": "A boolean. Do not use k-space forward warping.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "pava",
@@ -378,8 +348,8 @@
             "id": "all_or_none_group_2",
             "name": "All or none group 2",
             "members": [
-                "warped_file",
-                "in_file"
+                "in_file",
+                "warped_file"
             ],
             "all-or-none": true
         },
@@ -387,8 +357,8 @@
             "id": "all_or_none_group_3",
             "name": "All or none group 3",
             "members": [
-                "shift_in_file",
-                "icorr"
+                "icorr",
+                "shift_in_file"
             ],
             "all-or-none": true
         },
@@ -396,8 +366,8 @@
             "id": "all_or_none_group_4",
             "name": "All or none group 4",
             "members": [
-                "icorr_only",
-                "unwarped_file"
+                "unwarped_file",
+                "icorr_only"
             ],
             "all-or-none": true
         },
@@ -414,8 +384,8 @@
             "id": "mutex_group_2",
             "name": "Mutex group 2",
             "members": [
-                "save_unmasked_shift",
-                "save_shift"
+                "save_shift",
+                "save_unmasked_shift"
             ],
             "mutually-exclusive": true
         },
@@ -423,8 +393,8 @@
             "id": "mutex_group_3",
             "name": "Mutex group 3",
             "members": [
-                "save_unmasked_fmap",
-                "save_fmap"
+                "save_fmap",
+                "save_unmasked_fmap"
             ],
             "mutually-exclusive": true
         }

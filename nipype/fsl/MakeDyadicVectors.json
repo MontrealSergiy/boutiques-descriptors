@@ -1,25 +1,9 @@
 {
     "name": "MakeDyadicVectors",
-    "command-line": "nipype_cmd nipype.interfaces.fsl MakeDyadicVectors [ARGS] [ENVIRON] [MASK] [OUTPUT] [OUTPUT_TYPE] [PERC] [PHI_VOL] [THETA_VOL]",
+    "command-line": "MakeDyadicVectors [MASK] [OUTPUT] [PERC] [PHI_VOL] [THETA_VOL]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "MakeDyadicVectors, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MakeDyadicVectors).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
         {
             "id": "mask",
             "name": "Mask",
@@ -36,20 +20,6 @@
             "description": "A file name. No description provided.",
             "optional": true,
             "default-value": "dyads"
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "perc",

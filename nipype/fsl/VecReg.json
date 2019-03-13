@@ -1,6 +1,7 @@
 {
     "name": "VecReg",
-    "command-line": "nipype_cmd nipype.interfaces.fsl VecReg [AFFINE_MAT] [ARGS] [ENVIRON] [IN_FILE] [INTERPOLATION] [MASK] [OUT_FILE] [OUTPUT_TYPE] [REF_MASK] [REF_VOL] [ROTATION_MAT] [ROTATION_WARP] [WARP_FIELD]",
+    "command-line": "VecReg [AFFINE_MAT] [IN_FILE] [INTERPOLATION] [MASK] [OUT_FILE] [REF_MASK] [REF_VOL] [ROTATION_MAT] [ROTATION_WARP] [WARP_FIELD]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "VecReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: VecReg).",
     "inputs": [
         {
@@ -11,23 +12,6 @@
             "command-line-flag": "-t",
             "description": "An existing file name. Filename for affine transformation matrix.",
             "optional": true
-        },
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "in_file",
@@ -70,20 +54,6 @@
             "command-line-flag": "-o",
             "description": "A file name. Filename for output registered vector or tensor field.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "ref_mask",

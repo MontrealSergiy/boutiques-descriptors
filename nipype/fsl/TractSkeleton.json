@@ -1,6 +1,7 @@
 {
     "name": "TractSkeleton",
-    "command-line": "nipype_cmd nipype.interfaces.fsl TractSkeleton [ALT_DATA_FILE] [ALT_SKELETON] [ARGS] [DATA_FILE] [DISTANCE_MAP] [ENVIRON] [IN_FILE] [OUTPUT_TYPE] [PROJECT_DATA] [PROJECTED_DATA] [SEARCH_MASK_FILE] [SKELETON_FILE] [THRESHOLD] [USE_CINGULUM_MASK]",
+    "command-line": "TractSkeleton [ALT_DATA_FILE] [ALT_SKELETON] [DATA_FILE] [DISTANCE_MAP] [IN_FILE] [PROJECT_DATA] [PROJECTED_DATA] [SEARCH_MASK_FILE] [SKELETON_FILE] [THRESHOLD] [USE_CINGULUM_MASK]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "TractSkeleton, as implemented in Nipype (module: nipype.interfaces.fsl, interface: TractSkeleton).",
     "inputs": [
         {
@@ -22,14 +23,6 @@
             "optional": true
         },
         {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
-        {
             "id": "data_file",
             "name": "Data file",
             "type": "File",
@@ -46,15 +39,6 @@
             "optional": true
         },
         {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
             "id": "in_file",
             "name": "In file",
             "type": "File",
@@ -62,20 +46,6 @@
             "command-line-flag": "-i",
             "description": "An existing file name. Input image (typcially mean fa volume).",
             "optional": false
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "project_data",
@@ -169,10 +139,10 @@
             "id": "all_or_none_group",
             "name": "All or none group",
             "members": [
-                "distance_map",
                 "project_data",
+                "threshold",
                 "data_file",
-                "threshold"
+                "distance_map"
             ],
             "all-or-none": true
         },
@@ -180,8 +150,8 @@
             "id": "mutex_group",
             "name": "Mutex group",
             "members": [
-                "use_cingulum_mask",
-                "search_mask_file"
+                "search_mask_file",
+                "use_cingulum_mask"
             ],
             "mutually-exclusive": true
         }

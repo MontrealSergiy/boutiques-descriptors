@@ -1,16 +1,9 @@
 {
     "name": "SUSAN",
-    "command-line": "nipype_cmd nipype.interfaces.fsl SUSAN [ARGS] [BRIGHTNESS_THRESHOLD] [DIMENSION] [ENVIRON] [FWHM] [IN_FILE] [OUT_FILE] [OUTPUT_TYPE] [USANS] [USE_MEDIAN]",
+    "command-line": "SUSAN [BRIGHTNESS_THRESHOLD] [DIMENSION] [FWHM] [IN_FILE] [OUT_FILE] [USANS] [USE_MEDIAN]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "SUSAN, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SUSAN).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "brightness_threshold",
             "name": "Brightness threshold",
@@ -32,15 +25,6 @@
                 3,
                 2
             ]
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "fwhm",
@@ -65,20 +49,6 @@
             "value-key": "[OUT_FILE]",
             "description": "A file name. Output file name.",
             "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "usans",

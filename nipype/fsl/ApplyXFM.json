@@ -1,7 +1,8 @@
 {
-    "name": "FLIRT",
-    "command-line": "nipype_cmd nipype.interfaces.fsl FLIRT [ANGLE_REP] [APPLY_ISOXFM] [APPLY_XFM] [ARGS] [BBRSLOPE] [BBRTYPE] [BGVALUE] [BINS] [COARSE_SEARCH] [COST] [COST_FUNC] [DATATYPE] [DISPLAY_INIT] [DOF] [ECHOSPACING] [ENVIRON] [FIELDMAP] [FIELDMAPMASK] [FINE_SEARCH] [FORCE_SCALING] [IN_FILE] [IN_MATRIX_FILE] [IN_WEIGHT] [INTERP] [MIN_SAMPLING] [NO_CLAMP] [NO_RESAMPLE] [NO_RESAMPLE_BLUR] [NO_SEARCH] [OUT_FILE] [OUT_LOG] [OUT_MATRIX_FILE] [OUTPUT_TYPE] [PADDING_SIZE] [PEDIR] [REF_WEIGHT] [REFERENCE] [RIGID2D] [SAVE_LOG] [SCHEDULE] [SEARCHR_X] [SEARCHR_Y] [SEARCHR_Z] [SINC_WIDTH] [SINC_WINDOW] [USES_QFORM] [VERBOSE] [WM_SEG] [WMCOORDS] [WMNORMS]",
-    "description": "FLIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FLIRT).",
+    "name": "ApplyXFM",
+    "command-line": "ApplyXFM [ANGLE_REP] [APPLY_ISOXFM] [APPLY_XFM] [BBRSLOPE] [BBRTYPE] [BGVALUE] [BINS] [COARSE_SEARCH] [COST] [COST_FUNC] [DATATYPE] [DISPLAY_INIT] [DOF] [ECHOSPACING] [FIELDMAP] [FIELDMAPMASK] [FINE_SEARCH] [FORCE_SCALING] [IN_FILE] [IN_MATRIX_FILE] [IN_WEIGHT] [INTERP] [MIN_SAMPLING] [NO_CLAMP] [NO_RESAMPLE] [NO_RESAMPLE_BLUR] [NO_SEARCH] [PADDING_SIZE] [PEDIR] [REF_WEIGHT] [REFERENCE] [RIGID2D] [SAVE_LOG] [SCHEDULE] [SEARCHR_X] [SEARCHR_Y] [SEARCHR_Z] [SINC_WIDTH] [SINC_WINDOW] [USES_QFORM] [VERBOSE] [WM_SEG] [WMCOORDS] [WMNORMS] [OUT_FILE] [OUT_LOG] [OUT_MATRIX_FILE]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
+    "description": "ApplyXFM, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ApplyXFM).",
     "inputs": [
         {
             "id": "angle_rep",
@@ -32,15 +33,8 @@
             "value-key": "[APPLY_XFM]",
             "command-line-flag": "-applyxfm",
             "description": "A boolean. Apply transformation supplied by in_matrix_file or uses_qform to use the affine matrix stored in the reference header.",
-            "optional": true
-        },
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
+            "optional": true,
+            "default-value": true
         },
         {
             "id": "bbrslope",
@@ -175,15 +169,6 @@
             "optional": true
         },
         {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
-        },
-        {
             "id": "fieldmap",
             "name": "Fieldmap",
             "type": "File",
@@ -306,46 +291,6 @@
             "command-line-flag": "-nosearch",
             "description": "A boolean. Set all angular searches to ranges 0 to 0.",
             "optional": true
-        },
-        {
-            "id": "out_file",
-            "name": "Out file",
-            "type": "File",
-            "value-key": "[OUT_FILE]",
-            "command-line-flag": "-out",
-            "description": "A file name. Registered output file.",
-            "optional": true
-        },
-        {
-            "id": "out_log",
-            "name": "Out log",
-            "type": "File",
-            "value-key": "[OUT_LOG]",
-            "description": "A file name. Output log.",
-            "optional": true
-        },
-        {
-            "id": "out_matrix_file",
-            "name": "Out matrix file",
-            "type": "File",
-            "value-key": "[OUT_MATRIX_FILE]",
-            "command-line-flag": "-omat",
-            "description": "A file name. Output affine matrix in 4x4 asciii format.",
-            "optional": true
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "padding_size",
@@ -525,24 +470,29 @@
     "output-files": [
         {
             "name": "Out file",
-            "id": "out_file_outfile",
-            "path-template": "[OUT_FILE]",
+            "id": "out_file",
+            "path-template": "[IN_FILE]_flirt",
             "optional": true,
-            "description": "An existing file name. Path/name of registered file (if generated)."
+            "description": "An existing file name. Path/name of registered file (if generated).",
+            "value-key": "[OUT_FILE]",
+            "command-line-flag": "-out"
         },
         {
             "name": "Out log",
-            "id": "out_log_outfile",
-            "path-template": "[OUT_LOG]",
+            "id": "out_log",
+            "path-template": "[IN_FILE]_flirt.log",
             "optional": true,
-            "description": "A file name. Path/name of output log (if generated)."
+            "description": "A file name. Path/name of output log (if generated).",
+            "value-key": "[OUT_LOG]"
         },
         {
             "name": "Out matrix file",
-            "id": "out_matrix_file_outfile",
-            "path-template": "[OUT_MATRIX_FILE]",
+            "id": "out_matrix_file",
+            "path-template": "[IN_FILE]_flirt.mat",
             "optional": true,
-            "description": "An existing file name. Path/name of calculated affine transform (if generated)."
+            "description": "An existing file name. Path/name of calculated affine transform (if generated).",
+            "value-key": "[OUT_MATRIX_FILE]",
+            "command-line-flag": "-omat"
         }
     ],
     "groups": [

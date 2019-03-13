@@ -1,16 +1,9 @@
 {
     "name": "EpiReg",
-    "command-line": "nipype_cmd nipype.interfaces.fsl EpiReg [ARGS] [ECHOSPACING] [ENVIRON] [EPI] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [OUT_BASE] [OUTPUT_TYPE] [PEDIR] [T1_BRAIN] [T1_HEAD] [WEIGHT_IMAGE] [WMSEG]",
+    "command-line": "EpiReg [ECHOSPACING] [EPI] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [OUT_BASE] [PEDIR] [T1_BRAIN] [T1_HEAD] [WEIGHT_IMAGE] [WMSEG]",
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "EpiReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: EpiReg).",
     "inputs": [
-        {
-            "id": "args",
-            "name": "Args",
-            "type": "String",
-            "value-key": "[ARGS]",
-            "description": "A unicode string. Additional parameters to the command.",
-            "optional": true
-        },
         {
             "id": "echospacing",
             "name": "Echospacing",
@@ -19,15 +12,6 @@
             "command-line-flag": "--echospacing=",
             "description": "A float. Effective epi echo spacing                                 (sometimes called dwell time) - in seconds.",
             "optional": true
-        },
-        {
-            "id": "environ",
-            "name": "Environ",
-            "type": "String",
-            "value-key": "[ENVIRON]",
-            "description": "A dictionary with keys which are a bytes or none or a value of class 'str' and with values which are a bytes or none or a value of class 'str'. Environment variables.",
-            "optional": true,
-            "default-value": {}
         },
         {
             "id": "epi",
@@ -93,20 +77,6 @@
             "description": "A string. Output base name.",
             "optional": true,
             "default-value": "epi2struct"
-        },
-        {
-            "id": "output_type",
-            "name": "Output type",
-            "type": "String",
-            "value-key": "[OUTPUT_TYPE]",
-            "description": "'nifti' or 'nifti_pair' or 'nifti_gz' or 'nifti_pair_gz'. Fsl output type.",
-            "optional": true,
-            "value-choices": [
-                "NIFTI",
-                "NIFTI_PAIR",
-                "NIFTI_GZ",
-                "NIFTI_PAIR_GZ"
-            ]
         },
         {
             "id": "pedir",
