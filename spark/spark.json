@@ -1,11 +1,11 @@
 {
-    "command-line": "$SPARK_DIR/run_SPark.sh \"[FMRI_DATA]\" [GREY_MATTER_MASK] [NUMBER_OF_RESAMPLING] \"[NETWORK_SCALES]\" [NUMBER_OF_ITERATIONS] [P_VALUE] resamplingMethod [RESAMPLING_METHOD] blockWindowLength \"[BLOCK_WINDOW_LENGTH]\" dictionaryInitMethod [DICTIONARY_INIT_METHOD] sparseCodingMethod [SPARSE_CODING_METHOD] preserveAtomsDict [PRESERVE_ATOMS_DICT]",
+    "command-line": "octave --force-gui /spark/SPARK.m \"[FMRI_DATA]\" [GREY_MATTER_MASK] [NUMBER_OF_RESAMPLING] \"[NETWORK_SCALES]\" [NUMBER_OF_ITERATIONS] [P_VALUE] resamplingMethod [RESAMPLING_METHOD] blockWindowLength \"[BLOCK_WINDOW_LENGTH]\" dictionaryInitMethod [DICTIONARY_INIT_METHOD] sparseCodingMethod [SPARSE_CODING_METHOD] preserveAtomsDict [PRESERVE_ATOMS_DICT]",
     "container-image": {
         "image": "spark",
         "type": "singularity"
     },
     "name": "SPARK",
-    "author": "Obaï Bin Ka’b Ali",
+    "author": "Kangjoo Lee, Jean-Marc Lina, Jean Gotman, Christophe Grova",
     "description": "SParsity-based Analysis of Reliable K-hubness for Brain Functional Connectivity fMRI",
     "inputs": [
         {
