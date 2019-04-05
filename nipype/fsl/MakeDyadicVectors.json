@@ -1,6 +1,6 @@
 {
     "name": "MakeDyadicVectors",
-    "command-line": "MakeDyadicVectors [MASK] [OUTPUT] [PERC] [PHI_VOL] [THETA_VOL]",
+    "command-line": "MakeDyadicVectors [THETA_VOL] [PHI_VOL] [MASK] [OUTPUT] [PERC]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "MakeDyadicVectors, as implemented in Nipype (module: nipype.interfaces.fsl, interface: MakeDyadicVectors).",
     "inputs": [
@@ -62,11 +62,15 @@
             "description": "An existing file name. No description provided."
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

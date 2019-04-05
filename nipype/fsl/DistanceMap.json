@@ -1,6 +1,6 @@
 {
     "name": "DistanceMap",
-    "command-line": "DistanceMap [DISTANCE_MAP] [IN_FILE] [INVERT_INPUT] [LOCAL_MAX_FILE] [MASK_FILE]",
+    "command-line": "DistanceMap  [DISTANCE_MAP] [IN_FILE] [INVERT_INPUT] [LOCAL_MAX_FILE] [MASK_FILE]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "DistanceMap, as implemented in Nipype (module: nipype.interfaces.fsl, interface: DistanceMap).",
     "inputs": [
@@ -9,7 +9,8 @@
             "name": "Distance map",
             "type": "File",
             "value-key": "[DISTANCE_MAP]",
-            "command-line-flag": "--out=",
+            "command-line-flag": "--out",
+            "command-line-flag-separator": "=",
             "description": "A file name. Distance map to write.",
             "optional": true
         },
@@ -18,7 +19,8 @@
             "name": "In file",
             "type": "File",
             "value-key": "[IN_FILE]",
-            "command-line-flag": "--in=",
+            "command-line-flag": "--in",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Image to calculate distance values for.",
             "optional": false
         },
@@ -36,7 +38,8 @@
             "name": "Local max file",
             "type": "Flag",
             "value-key": "[LOCAL_MAX_FILE]",
-            "command-line-flag": "--localmax=",
+            "command-line-flag": "--localmax",
+            "command-line-flag-separator": "=",
             "description": "A boolean or a file name. Write an image of the local maxima.",
             "optional": true
         },
@@ -45,7 +48,8 @@
             "name": "Local max file",
             "type": "File",
             "value-key": "[LOCAL_MAX_FILE]",
-            "command-line-flag": "--localmax=",
+            "command-line-flag": "--localmax",
+            "command-line-flag-separator": "=",
             "description": "A boolean or a file name. Write an image of the local maxima.",
             "optional": true
         },
@@ -54,7 +58,8 @@
             "name": "Mask file",
             "type": "File",
             "value-key": "[MASK_FILE]",
-            "command-line-flag": "--mask=",
+            "command-line-flag": "--mask",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Binary mask to contrain calculations.",
             "optional": true
         }
@@ -86,11 +91,15 @@
             "mutually-exclusive": true
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

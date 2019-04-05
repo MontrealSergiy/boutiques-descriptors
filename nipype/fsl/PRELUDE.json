@@ -1,6 +1,6 @@
 {
     "name": "PRELUDE",
-    "command-line": "PRELUDE [COMPLEX_PHASE_FILE] [END] [LABEL_FILE] [LABELPROCESS2D] [MAGNITUDE_FILE] [MASK_FILE] [NUM_PARTITIONS] [PHASE_FILE] [PROCESS2D] [PROCESS3D] [RAWPHASE_FILE] [REMOVERAMPS] [SAVEMASK_FILE] [START] [THRESHOLD] [UNWRAPPED_PHASE_FILE]",
+    "command-line": "PRELUDE  [COMPLEX_PHASE_FILE] [END] [LABEL_FILE] [LABELPROCESS2D] [MAGNITUDE_FILE] [MASK_FILE] [NUM_PARTITIONS] [PHASE_FILE] [PROCESS2D] [PROCESS3D] [RAWPHASE_FILE] [REMOVERAMPS] [SAVEMASK_FILE] [START] [THRESHOLD] [UNWRAPPED_PHASE_FILE]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "PRELUDE, as implemented in Nipype (module: nipype.interfaces.fsl, interface: PRELUDE).",
     "inputs": [
@@ -9,7 +9,8 @@
             "name": "Complex phase file",
             "type": "File",
             "value-key": "[COMPLEX_PHASE_FILE]",
-            "command-line-flag": "--complex=",
+            "command-line-flag": "--complex",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Complex phase input volume.",
             "optional": false
         },
@@ -19,7 +20,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[END]",
-            "command-line-flag": "--end=",
+            "command-line-flag": "--end",
+            "command-line-flag-separator": "=",
             "description": "An integer (int or long). Final image number to process (default inf).",
             "optional": true
         },
@@ -28,7 +30,8 @@
             "name": "Label file",
             "type": "File",
             "value-key": "[LABEL_FILE]",
-            "command-line-flag": "--labels=",
+            "command-line-flag": "--labels",
+            "command-line-flag-separator": "=",
             "description": "A file name. Saving the area labels output.",
             "optional": true
         },
@@ -46,7 +49,8 @@
             "name": "Magnitude file",
             "type": "File",
             "value-key": "[MAGNITUDE_FILE]",
-            "command-line-flag": "--abs=",
+            "command-line-flag": "--abs",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. File containing magnitude image.",
             "optional": false
         },
@@ -55,7 +59,8 @@
             "name": "Mask file",
             "type": "File",
             "value-key": "[MASK_FILE]",
-            "command-line-flag": "--mask=",
+            "command-line-flag": "--mask",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename of mask input volume.",
             "optional": true
         },
@@ -65,7 +70,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[NUM_PARTITIONS]",
-            "command-line-flag": "--numphasesplit=",
+            "command-line-flag": "--numphasesplit",
+            "command-line-flag-separator": "=",
             "description": "An integer (int or long). Number of phase partitions to use.",
             "optional": true
         },
@@ -74,7 +80,8 @@
             "name": "Phase file",
             "type": "File",
             "value-key": "[PHASE_FILE]",
-            "command-line-flag": "--phase=",
+            "command-line-flag": "--phase",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Raw phase file.",
             "optional": false
         },
@@ -101,7 +108,8 @@
             "name": "Rawphase file",
             "type": "File",
             "value-key": "[RAWPHASE_FILE]",
-            "command-line-flag": "--rawphase=",
+            "command-line-flag": "--rawphase",
+            "command-line-flag-separator": "=",
             "description": "A file name. Saving the raw phase output.",
             "optional": true
         },
@@ -119,7 +127,8 @@
             "name": "Savemask file",
             "type": "File",
             "value-key": "[SAVEMASK_FILE]",
-            "command-line-flag": "--savemask=",
+            "command-line-flag": "--savemask",
+            "command-line-flag-separator": "=",
             "description": "A file name. Saving the mask volume.",
             "optional": true
         },
@@ -129,7 +138,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[START]",
-            "command-line-flag": "--start=",
+            "command-line-flag": "--start",
+            "command-line-flag-separator": "=",
             "description": "An integer (int or long). First image number to process (default 0).",
             "optional": true
         },
@@ -138,7 +148,8 @@
             "name": "Threshold",
             "type": "Number",
             "value-key": "[THRESHOLD]",
-            "command-line-flag": "--thresh=",
+            "command-line-flag": "--thresh",
+            "command-line-flag-separator": "=",
             "description": "A float. Intensity threshold for masking.",
             "optional": true
         },
@@ -147,7 +158,8 @@
             "name": "Unwrapped phase file",
             "type": "File",
             "value-key": "[UNWRAPPED_PHASE_FILE]",
-            "command-line-flag": "--unwrap=",
+            "command-line-flag": "--unwrap",
+            "command-line-flag-separator": "=",
             "description": "A file name. File containing unwrapepd phase.",
             "optional": true
         }
@@ -166,9 +178,9 @@
             "id": "mutex_group",
             "name": "Mutex group",
             "members": [
-                "complex_phase_file",
                 "magnitude_file",
-                "phase_file"
+                "phase_file",
+                "complex_phase_file"
             ],
             "mutually-exclusive": true
         },
@@ -176,8 +188,8 @@
             "id": "mutex_group_2",
             "name": "Mutex group 2",
             "members": [
-                "complex_phase_file",
-                "magnitude_file"
+                "magnitude_file",
+                "complex_phase_file"
             ],
             "mutually-exclusive": true
         },
@@ -185,8 +197,8 @@
             "id": "mutex_group_3",
             "name": "Mutex group 3",
             "members": [
-                "complex_phase_file",
-                "phase_file"
+                "phase_file",
+                "complex_phase_file"
             ],
             "mutually-exclusive": true
         },
@@ -203,18 +215,22 @@
             "id": "mutex_group_5",
             "name": "Mutex group 5",
             "members": [
+                "process2d",
                 "labelprocess2d",
-                "process3d",
-                "process2d"
+                "process3d"
             ],
             "mutually-exclusive": true
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

@@ -32,11 +32,15 @@
             "description": "A list of items which are an existing file name. Path/name of output volume after thresholding."
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

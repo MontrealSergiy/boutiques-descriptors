@@ -1,6 +1,6 @@
 {
     "name": "BET",
-    "command-line": "BET [CENTER] [FRAC] [FUNCTIONAL] [IN_FILE] [MASK] [MESH] [NO_OUTPUT] [OUT_FILE] [OUTLINE] [PADDING] [RADIUS] [REDUCE_BIAS] [REMOVE_EYES] [ROBUST] [SKULL] [SURFACES] [T2_GUIDED] [THRESHOLD] [VERTICAL_GRADIENT]",
+    "command-line": "BET [IN_FILE] [OUT_FILE] [CENTER] [FRAC] [FUNCTIONAL] [MASK] [MESH] [NO_OUTPUT] [OUTLINE] [PADDING] [RADIUS] [REDUCE_BIAS] [REMOVE_EYES] [ROBUST] [SKULL] [SURFACES] [T2_GUIDED] [THRESHOLD] [VERTICAL_GRADIENT]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "BET, as implemented in Nipype (module: nipype.interfaces.fsl, interface: BET).",
     "inputs": [
@@ -262,22 +262,26 @@
             "id": "mutex_group",
             "name": "Mutex group",
             "members": [
-                "t2_guided",
                 "reduce_bias",
-                "robust",
                 "functional",
-                "padding",
                 "surfaces",
-                "remove_eyes"
+                "padding",
+                "robust",
+                "remove_eyes",
+                "t2_guided"
             ],
             "mutually-exclusive": true
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

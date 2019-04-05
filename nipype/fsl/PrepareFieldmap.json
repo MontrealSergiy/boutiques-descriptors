@@ -1,6 +1,6 @@
 {
     "name": "PrepareFieldmap",
-    "command-line": "PrepareFieldmap [DELTA_TE] [IN_MAGNITUDE] [IN_PHASE] [NOCHECK] [OUT_FIELDMAP] [SCANNER]",
+    "command-line": "PrepareFieldmap [DELTA_TE] [SCANNER] [IN_PHASE] [IN_MAGNITUDE] [OUT_FIELDMAP] [NOCHECK]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "PrepareFieldmap, as implemented in Nipype (module: nipype.interfaces.fsl, interface: PrepareFieldmap).",
     "inputs": [
@@ -66,11 +66,15 @@
             "description": "An existing file name. Output name for prepared fieldmap."
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "ApplyWarp",
-    "command-line": "ApplyWarp [ABSWARP] [DATATYPE] [FIELD_FILE] [IN_FILE] [INTERP] [MASK_FILE] [OUT_FILE] [POSTMAT] [PREMAT] [REF_FILE] [RELWARP] [SUPERLEVEL] [SUPERSAMPLE]",
+    "command-line": "ApplyWarp [INTERP] [IN_FILE] [REF_FILE] [OUT_FILE] [RELWARP] [ABSWARP] [DATATYPE] [FIELD_FILE] [MASK_FILE] [POSTMAT] [PREMAT] [SUPERLEVEL] [SUPERSAMPLE]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "ApplyWarp, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ApplyWarp).",
     "inputs": [
@@ -18,7 +18,8 @@
             "name": "Datatype",
             "type": "String",
             "value-key": "[DATATYPE]",
-            "command-line-flag": "--datatype=",
+            "command-line-flag": "--datatype",
+            "command-line-flag-separator": "=",
             "description": "'char' or 'short' or 'int' or 'float' or 'double'. Force output data type [char short int float double].",
             "optional": true,
             "value-choices": [
@@ -34,7 +35,8 @@
             "name": "Field file",
             "type": "File",
             "value-key": "[FIELD_FILE]",
-            "command-line-flag": "--warp=",
+            "command-line-flag": "--warp",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. File containing warp field.",
             "optional": true
         },
@@ -43,7 +45,8 @@
             "name": "In file",
             "type": "File",
             "value-key": "[IN_FILE]",
-            "command-line-flag": "--in=",
+            "command-line-flag": "--in",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Image to be warped.",
             "optional": false
         },
@@ -52,7 +55,8 @@
             "name": "Interp",
             "type": "String",
             "value-key": "[INTERP]",
-            "command-line-flag": "--interp=",
+            "command-line-flag": "--interp",
+            "command-line-flag-separator": "=",
             "description": "'nn' or 'trilinear' or 'sinc' or 'spline'. Interpolation method.",
             "optional": true,
             "value-choices": [
@@ -67,7 +71,8 @@
             "name": "Mask file",
             "type": "File",
             "value-key": "[MASK_FILE]",
-            "command-line-flag": "--mask=",
+            "command-line-flag": "--mask",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename for mask image (in reference space).",
             "optional": true
         },
@@ -76,7 +81,8 @@
             "name": "Out file",
             "type": "File",
             "value-key": "[OUT_FILE]",
-            "command-line-flag": "--out=",
+            "command-line-flag": "--out",
+            "command-line-flag-separator": "=",
             "description": "A file name. Output filename.",
             "optional": true
         },
@@ -85,7 +91,8 @@
             "name": "Postmat",
             "type": "File",
             "value-key": "[POSTMAT]",
-            "command-line-flag": "--postmat=",
+            "command-line-flag": "--postmat",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename for post-transform (affine matrix).",
             "optional": true
         },
@@ -94,7 +101,8 @@
             "name": "Premat",
             "type": "File",
             "value-key": "[PREMAT]",
-            "command-line-flag": "--premat=",
+            "command-line-flag": "--premat",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename for pre-transform (affine matrix).",
             "optional": true
         },
@@ -103,7 +111,8 @@
             "name": "Ref file",
             "type": "File",
             "value-key": "[REF_FILE]",
-            "command-line-flag": "--ref=",
+            "command-line-flag": "--ref",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Reference image.",
             "optional": false
         },
@@ -121,7 +130,8 @@
             "name": "Superlevel",
             "type": "String",
             "value-key": "[SUPERLEVEL]",
-            "command-line-flag": "--superlevel=",
+            "command-line-flag": "--superlevel",
+            "command-line-flag-separator": "=",
             "description": "'a' or an integer (int or long). Level of intermediary supersampling, a for 'automatic' or integer level. default = 2.",
             "optional": true,
             "value-choices": [
@@ -134,7 +144,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[SUPERLEVEL]",
-            "command-line-flag": "--superlevel=",
+            "command-line-flag": "--superlevel",
+            "command-line-flag-separator": "=",
             "description": "'a' or an integer (int or long). Level of intermediary supersampling, a for 'automatic' or integer level. default = 2.",
             "optional": true
         },
@@ -171,17 +182,21 @@
             "id": "mutex_group",
             "name": "Mutex group",
             "members": [
-                "abswarp",
-                "relwarp"
+                "relwarp",
+                "abswarp"
             ],
             "mutually-exclusive": true
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

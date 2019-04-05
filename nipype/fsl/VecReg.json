@@ -1,6 +1,6 @@
 {
     "name": "VecReg",
-    "command-line": "VecReg [AFFINE_MAT] [IN_FILE] [INTERPOLATION] [MASK] [OUT_FILE] [REF_MASK] [REF_VOL] [ROTATION_MAT] [ROTATION_WARP] [WARP_FIELD]",
+    "command-line": "VecReg  [AFFINE_MAT] [IN_FILE] [INTERPOLATION] [MASK] [OUT_FILE] [REF_MASK] [REF_VOL] [ROTATION_MAT] [ROTATION_WARP] [WARP_FIELD]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "VecReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: VecReg).",
     "inputs": [
@@ -27,7 +27,8 @@
             "name": "Interpolation",
             "type": "String",
             "value-key": "[INTERPOLATION]",
-            "command-line-flag": "--interp=",
+            "command-line-flag": "--interp",
+            "command-line-flag-separator": "=",
             "description": "'nearestneighbour' or 'trilinear' or 'sinc' or 'spline'. Interpolation method : nearestneighbour, trilinear (default), sinc or spline.",
             "optional": true,
             "value-choices": [
@@ -60,7 +61,8 @@
             "name": "Ref mask",
             "type": "File",
             "value-key": "[REF_MASK]",
-            "command-line-flag": "--refmask=",
+            "command-line-flag": "--refmask",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Brain mask in output space (useful for speed up of nonlinear reg).",
             "optional": true
         },
@@ -78,7 +80,8 @@
             "name": "Rotation mat",
             "type": "File",
             "value-key": "[ROTATION_MAT]",
-            "command-line-flag": "--rotmat=",
+            "command-line-flag": "--rotmat",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename for secondary affine matrix if set, this will be used for the rotation of the vector/tensor field.",
             "optional": true
         },
@@ -87,7 +90,8 @@
             "name": "Rotation warp",
             "type": "File",
             "value-key": "[ROTATION_WARP]",
-            "command-line-flag": "--rotwarp=",
+            "command-line-flag": "--rotwarp",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename for secondary warp field if set, this will be used for the rotation of the vector/tensor field.",
             "optional": true
         },
@@ -110,11 +114,15 @@
             "description": "An existing file name. Path/name of filename for the registered vector or tensor field."
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

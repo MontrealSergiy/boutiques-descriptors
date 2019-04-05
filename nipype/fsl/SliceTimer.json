@@ -1,6 +1,6 @@
 {
     "name": "SliceTimer",
-    "command-line": "SliceTimer [CUSTOM_ORDER] [CUSTOM_TIMINGS] [GLOBAL_SHIFT] [IN_FILE] [INDEX_DIR] [INTERLEAVED] [OUT_FILE] [SLICE_DIRECTION] [TIME_REPETITION]",
+    "command-line": "SliceTimer [IN_FILE] [CUSTOM_ORDER] [CUSTOM_TIMINGS] [GLOBAL_SHIFT] [INDEX_DIR] [INTERLEAVED] [OUT_FILE] [SLICE_DIRECTION] [TIME_REPETITION]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "SliceTimer, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SliceTimer).",
     "inputs": [
@@ -9,7 +9,8 @@
             "name": "Custom order",
             "type": "File",
             "value-key": "[CUSTOM_ORDER]",
-            "command-line-flag": "--ocustom=",
+            "command-line-flag": "--ocustom",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename of single-column custom interleave order file (first slice is referred to as 1 not 0).",
             "optional": true
         },
@@ -18,7 +19,8 @@
             "name": "Custom timings",
             "type": "File",
             "value-key": "[CUSTOM_TIMINGS]",
-            "command-line-flag": "--tcustom=",
+            "command-line-flag": "--tcustom",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Slice timings, in fractions of tr, range 0:1 (default is 0.5 = no shift).",
             "optional": true
         },
@@ -36,7 +38,8 @@
             "name": "In file",
             "type": "File",
             "value-key": "[IN_FILE]",
-            "command-line-flag": "--in=",
+            "command-line-flag": "--in",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename of input timeseries.",
             "optional": false
         },
@@ -63,7 +66,8 @@
             "name": "Out file",
             "type": "File",
             "value-key": "[OUT_FILE]",
-            "command-line-flag": "--out=",
+            "command-line-flag": "--out",
+            "command-line-flag-separator": "=",
             "description": "A file name. Filename of output timeseries.",
             "optional": true
         },
@@ -72,7 +76,8 @@
             "name": "Slice direction",
             "type": "Number",
             "value-key": "[SLICE_DIRECTION]",
-            "command-line-flag": "--direction=",
+            "command-line-flag": "--direction",
+            "command-line-flag-separator": "=",
             "description": "1 or 2 or 3. Direction of slice acquisition (x=1, y=2, z=3) - default is z.",
             "optional": true,
             "integer": true,
@@ -87,7 +92,8 @@
             "name": "Time repetition",
             "type": "Number",
             "value-key": "[TIME_REPETITION]",
-            "command-line-flag": "--repeat=",
+            "command-line-flag": "--repeat",
+            "command-line-flag-separator": "=",
             "description": "A float. Specify tr of data - default is 3s.",
             "optional": true
         }
@@ -101,11 +107,15 @@
             "description": "An existing file name. Slice time corrected file."
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

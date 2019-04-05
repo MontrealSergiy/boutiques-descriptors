@@ -1,6 +1,6 @@
 {
     "name": "ICA_AROMA",
-    "command-line": "ICA_AROMA [TR] [DENOISE_TYPE] [DIM] [FEAT_DIR] [FNIRT_WARP_FILE] [IN_FILE] [MASK] [MAT_FILE] [MELODIC_DIR] [MOTION_PARAMETERS] [OUT_DIR]",
+    "command-line": "ICA_AROMA  [TR] [DENOISE_TYPE] [DIM] [FEAT_DIR] [FNIRT_WARP_FILE] [IN_FILE] [MASK] [MAT_FILE] [MELODIC_DIR] [MOTION_PARAMETERS] [OUT_DIR]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "ICA_AROMA, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ICA_AROMA).",
     "inputs": [
@@ -141,11 +141,11 @@
             "id": "mutex_group",
             "name": "Mutex group",
             "members": [
-                "feat_dir",
-                "fnirt_warp_file",
                 "motion_parameters",
-                "mat_file",
-                "in_file"
+                "fnirt_warp_file",
+                "in_file",
+                "feat_dir",
+                "mat_file"
             ],
             "mutually-exclusive": true
         },
@@ -153,8 +153,8 @@
             "id": "mutex_group_2",
             "name": "Mutex group 2",
             "members": [
-                "feat_dir",
-                "in_file"
+                "in_file",
+                "feat_dir"
             ],
             "mutually-exclusive": true
         },
@@ -162,8 +162,8 @@
             "id": "mutex_group_3",
             "name": "Mutex group 3",
             "members": [
-                "feat_dir",
-                "mask"
+                "mask",
+                "feat_dir"
             ],
             "mutually-exclusive": true
         },
@@ -180,8 +180,8 @@
             "id": "mutex_group_5",
             "name": "Mutex group 5",
             "members": [
-                "feat_dir",
-                "fnirt_warp_file"
+                "fnirt_warp_file",
+                "feat_dir"
             ],
             "mutually-exclusive": true
         },
@@ -189,17 +189,21 @@
             "id": "mutex_group_6",
             "name": "Mutex group 6",
             "members": [
-                "feat_dir",
-                "motion_parameters"
+                "motion_parameters",
+                "feat_dir"
             ],
             "mutually-exclusive": true
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

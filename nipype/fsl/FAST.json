@@ -1,6 +1,6 @@
 {
     "name": "FAST",
-    "command-line": "FAST [BIAS_ITERS] [BIAS_LOWPASS] [HYPER] [IMG_TYPE] [IN_FILES] [INIT_SEG_SMOOTH] [INIT_TRANSFORM] [ITERS_AFTERBIAS] [MANUAL_SEG] [MIXEL_SMOOTH] [NO_BIAS] [NO_PVE] [NUMBER_CLASSES] [OTHER_PRIORS] [OUT_BASENAME] [OUTPUT_BIASCORRECTED] [OUTPUT_BIASFIELD] [PROBABILITY_MAPS] [SEGMENT_ITERS] [SEGMENTS] [USE_PRIORS] [VERBOSE]",
+    "command-line": "FAST  [IN_FILES] [BIAS_ITERS] [BIAS_LOWPASS] [HYPER] [IMG_TYPE] [INIT_SEG_SMOOTH] [INIT_TRANSFORM] [ITERS_AFTERBIAS] [MANUAL_SEG] [MIXEL_SMOOTH] [NO_BIAS] [NO_PVE] [NUMBER_CLASSES] [OTHER_PRIORS] [OUT_BASENAME] [OUTPUT_BIASCORRECTED] [OUTPUT_BIASFIELD] [PROBABILITY_MAPS] [SEGMENT_ITERS] [SEGMENTS] [USE_PRIORS] [VERBOSE]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "FAST, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FAST).",
     "inputs": [
@@ -232,7 +232,8 @@
             "id": "bias_field",
             "path-template": "bias_field",
             "optional": true,
-            "description": "A list of items which are a file name. No description provided."
+            "description": "A list of items which are a file name. No description provided.",
+            "list": true
         },
         {
             "name": "Mixeltype",
@@ -246,7 +247,8 @@
             "id": "partial_volume_files",
             "path-template": "partial_volume_files",
             "optional": true,
-            "description": "A list of items which are a file name. No description provided."
+            "description": "A list of items which are a file name. No description provided.",
+            "list": true
         },
         {
             "name": "Partial volume map",
@@ -260,21 +262,24 @@
             "id": "probability_maps_outfile",
             "path-template": "[PROBABILITY_MAPS]",
             "optional": true,
-            "description": "A list of items which are a file name. No description provided."
+            "description": "A list of items which are a file name. No description provided.",
+            "list": true
         },
         {
             "name": "Restored image",
             "id": "restored_image",
             "path-template": "restored_image",
             "optional": true,
-            "description": "A list of items which are a file name. No description provided."
+            "description": "A list of items which are a file name. No description provided.",
+            "list": true
         },
         {
             "name": "Tissue class files",
             "id": "tissue_class_files",
             "path-template": "tissue_class_files",
             "optional": true,
-            "description": "A list of items which are a file name. No description provided."
+            "description": "A list of items which are a file name. No description provided.",
+            "list": true
         },
         {
             "name": "Tissue class map",
@@ -284,11 +289,15 @@
             "description": "An existing file name. Path/name of binary segmented volume file one val for each class  _seg."
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

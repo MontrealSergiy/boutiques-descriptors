@@ -1,0 +1,735 @@
+{
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
+    "command-line": "fnirt [AFFINE_FILE] [APPLY_INMASK] [APPLY_INTENSITY_MAPPING] [APPLY_REFMASK] [BIAS_REGULARIZATION_LAMBDA] [BIASFIELD_RESOLUTION] [CONFIG_FILE] [DERIVE_FROM_REF] [FIELD_FILE] [FIELDCOEFF_FILE] [HESSIAN_PRECISION] [IN_FILE] [IN_FWHM] [IN_INTENSITYMAP_FILE] [INMASK_FILE] [INMASK_VAL] [INTENSITY_MAPPING_MODEL] [INTENSITY_MAPPING_ORDER] [INWARP_FILE] [JACOBIAN_FILE] [JACOBIAN_RANGE] [LOG_FILE] [MAX_NONLIN_ITER] [MODULATEDREF_FILE] [OUT_INTENSITYMAP_FILE] [REF_FILE] [REF_FWHM] [REFMASK_FILE] [REFMASK_VAL] [REGULARIZATION_LAMBDA] [REGULARIZATION_MODEL] [SKIP_IMPLICIT_IN_MASKING] [SKIP_IMPLICIT_REF_MASKING] [SKIP_INMASK] [SKIP_INTENSITY_MAPPING] [SKIP_LAMBDA_SSQ] [SKIP_REFMASK] [SPLINE_ORDER] [SUBSAMPLING_SCHEME] [WARP_RESOLUTION] [WARPED_FILE]",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "index": "index.docker.io",
+        "type": "docker"
+    },
+    "description": "FNIRT, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FNIRT).",
+    "doi": "10.5281/zenodo.2597647",
+    "groups": [
+        {
+            "id": "config_file_group",
+            "members": [
+                "config_file",
+                "config_file_2"
+            ],
+            "mutually-exclusive": true,
+            "name": "Config file group"
+        },
+        {
+            "id": "field_file_group",
+            "members": [
+                "field_file",
+                "field_file_2"
+            ],
+            "mutually-exclusive": true,
+            "name": "Field file group"
+        },
+        {
+            "id": "fieldcoeff_file_group",
+            "members": [
+                "fieldcoeff_file",
+                "fieldcoeff_file_2"
+            ],
+            "mutually-exclusive": true,
+            "name": "Fieldcoeff file group"
+        },
+        {
+            "id": "jacobian_file_group",
+            "members": [
+                "jacobian_file",
+                "jacobian_file_2"
+            ],
+            "mutually-exclusive": true,
+            "name": "Jacobian file group"
+        },
+        {
+            "id": "modulatedref_file_group",
+            "members": [
+                "modulatedref_file",
+                "modulatedref_file_2"
+            ],
+            "mutually-exclusive": true,
+            "name": "Modulatedref file group"
+        },
+        {
+            "id": "out_intensitymap_file_group",
+            "members": [
+                "out_intensitymap_file",
+                "out_intensitymap_file_2"
+            ],
+            "mutually-exclusive": true,
+            "name": "Out intensitymap file group"
+        },
+        {
+            "id": "mutex_group",
+            "members": [
+                "apply_refmask",
+                "skip_refmask"
+            ],
+            "mutually-exclusive": true,
+            "name": "Mutex group"
+        },
+        {
+            "id": "mutex_group_2",
+            "members": [
+                "apply_inmask",
+                "skip_inmask"
+            ],
+            "mutually-exclusive": true,
+            "name": "Mutex group 2"
+        },
+        {
+            "id": "mutex_group_3",
+            "members": [
+                "skip_intensity_mapping",
+                "apply_intensity_mapping"
+            ],
+            "mutually-exclusive": true,
+            "name": "Mutex group 3"
+        }
+    ],
+    "inputs": [
+        {
+            "command-line-flag": "--aff",
+            "command-line-flag-separator": "=",
+            "description": "An existing file name. Name of file containing affine transform.",
+            "id": "affine_file",
+            "name": "Affine file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[AFFINE_FILE]"
+        },
+        {
+            "command-line-flag": "--applyinmask",
+            "command-line-flag-separator": "=",
+            "description": "A boolean. Use specified inmask if set, default 1 (true)",
+            "id": "apply_inmask",
+            "integer": true,
+            "maximum": 1,
+            "minimum": 0,
+            "name": "Apply inmask",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[APPLY_INMASK]"
+        },
+        {
+            "command-line-flag": "--estint",
+            "command-line-flag-separator": "=",
+            "description": "A boolean. Estimate intensity-mapping if set, default 1 (true)",
+            "id": "apply_intensity_mapping",
+            "integer": true,
+            "maximum": 1,
+            "minimum": 0,
+            "name": "Apply intensity mapping",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[APPLY_INTENSITY_MAPPING]"
+        },
+        {
+            "command-line-flag": "--applyrefmask",
+            "command-line-flag-separator": "=",
+            "description": "A boolean. Use specified refmask if set, default 1 (true)",
+            "id": "apply_refmask",
+            "integer": true,
+            "maximum": 1,
+            "minimum": 0,
+            "name": "Apply refmask",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[APPLY_REFMASK]"
+        },
+        {
+            "command-line-flag": "--biaslambda",
+            "command-line-flag-separator": "=",
+            "description": "A float. Weight of regularisation for bias-field, default 10000.",
+            "id": "bias_regularization_lambda",
+            "name": "Bias regularization lambda",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[BIAS_REGULARIZATION_LAMBDA]"
+        },
+        {
+            "command-line-flag": "--biasres",
+            "command-line-flag-separator": "=",
+            "description": "A tuple of the form: (an integer (int or long), an integer (int or long), an integer (int or long)). Resolution (in mm) of bias-field modelling local intensities, default 50, 50, 50.",
+            "id": "biasfield_resolution",
+            "integer": true,
+            "list": true,
+            "list-separator": ",",
+            "max-list-entries": 3,
+            "min-list-entries": 3,
+            "name": "Biasfield resolution",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[BIASFIELD_RESOLUTION]"
+        },
+        {
+            "command-line-flag": "--config",
+            "command-line-flag-separator": "=",
+            "description": "'t1_2_mni152_2mm' or 'fa_2_fmrib58_1mm' or an existing file name. Name of config file specifying command line arguments.",
+            "id": "config_file",
+            "name": "Config file",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "T1_2_MNI152_2mm",
+                "FA_2_FMRIB58_1mm"
+            ],
+            "value-key": "[CONFIG_FILE]"
+        },
+        {
+            "command-line-flag": "--config",
+            "command-line-flag-separator": "=",
+            "description": "'t1_2_mni152_2mm' or 'fa_2_fmrib58_1mm' or an existing file name. Name of config file specifying command line arguments.",
+            "id": "config_file_2",
+            "name": "Config file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[CONFIG_FILE]"
+        },
+        {
+            "command-line-flag": "--refderiv",
+            "command-line-flag-separator": "=",
+            "description": "A boolean. If true, ref image is used to calculate derivatives. default false.",
+            "id": "derive_from_ref",
+            "integer": true,
+            "maximum": 1,
+            "minimum": 0,
+            "name": "Derive from ref",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[DERIVE_FROM_REF]"
+        },
+        {
+            "command-line-flag": "--fout",
+            "command-line-flag-separator": "=",
+            "description": "A boolean or a file name. Name of output file with field or true.",
+            "id": "field_file",
+            "name": "Field file",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "true",
+                "false"
+            ],
+            "value-key": "[FIELD_FILE]"
+        },
+        {
+            "command-line-flag": "--fout",
+            "command-line-flag-separator": "=",
+            "description": "A boolean or a file name. Name of output file with field or true.",
+            "id": "field_file_2",
+            "name": "Field file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[FIELD_FILE]"
+        },
+        {
+            "command-line-flag": "--cout",
+            "command-line-flag-separator": "=",
+            "description": "A boolean or a file name. Name of output file with field coefficients or true.",
+            "id": "fieldcoeff_file",
+            "name": "Fieldcoeff file",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "true",
+                "false"
+            ],
+            "value-key": "[FIELDCOEFF_FILE]"
+        },
+        {
+            "command-line-flag": "--cout",
+            "command-line-flag-separator": "=",
+            "description": "A boolean or a file name. Name of output file with field coefficients or true.",
+            "id": "fieldcoeff_file_2",
+            "name": "Fieldcoeff file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[FIELDCOEFF_FILE]"
+        },
+        {
+            "command-line-flag": "--numprec",
+            "command-line-flag-separator": "=",
+            "description": "'double' or 'float'. Precision for representing hessian, double or float. default double.",
+            "id": "hessian_precision",
+            "name": "Hessian precision",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "double",
+                "float"
+            ],
+            "value-key": "[HESSIAN_PRECISION]"
+        },
+        {
+            "command-line-flag": "--in",
+            "command-line-flag-separator": "=",
+            "description": "An existing file name. Name of input image.",
+            "id": "in_file",
+            "name": "In file",
+            "optional": false,
+            "type": "File",
+            "value-key": "[IN_FILE]"
+        },
+        {
+            "command-line-flag": "--infwhm",
+            "command-line-flag-separator": "=",
+            "description": "A list of items which are an integer (int or long). Fwhm (in mm) of gaussian smoothing kernel for input volume, default [6, 4, 2, 2].",
+            "id": "in_fwhm",
+            "integer": true,
+            "list": true,
+            "list-separator": ",",
+            "name": "In fwhm",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[IN_FWHM]"
+        },
+        {
+            "command-line-flag": "--intin",
+            "command-line-flag-separator": "=",
+            "description": "A list of from 1 to 2 items which are an existing file name. Name of file/files containing initial intensity mapping usually generated by previous fnirt run.",
+            "id": "in_intensitymap_file",
+            "list": true,
+            "max-list-entries": 2,
+            "min-list-entries": 1,
+            "name": "In intensitymap file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[IN_INTENSITYMAP_FILE]"
+        },
+        {
+            "command-line-flag": "--inmask",
+            "command-line-flag-separator": "=",
+            "description": "An existing file name. Name of file with mask in input image space.",
+            "id": "inmask_file",
+            "name": "Inmask file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[INMASK_FILE]"
+        },
+        {
+            "command-line-flag": "--impinval",
+            "command-line-flag-separator": "=",
+            "description": "A float. Value to mask out in --in image. default =0.0.",
+            "id": "inmask_val",
+            "name": "Inmask val",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[INMASK_VAL]"
+        },
+        {
+            "command-line-flag": "--intmod",
+            "command-line-flag-separator": "=",
+            "description": "'none' or 'global_linear' or 'global_non_linear' or 'local_linear' or 'global_non_linear_with_bias' or 'local_non_linear'. Model for intensity-mapping.",
+            "id": "intensity_mapping_model",
+            "name": "Intensity mapping model",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "none",
+                "global_linear",
+                "global_non_linear",
+                "local_linear",
+                "global_non_linear_with_bias",
+                "local_non_linear"
+            ],
+            "value-key": "[INTENSITY_MAPPING_MODEL]"
+        },
+        {
+            "command-line-flag": "--intorder",
+            "command-line-flag-separator": "=",
+            "description": "An integer (int or long). Order of poynomial for mapping intensities, default 5.",
+            "id": "intensity_mapping_order",
+            "integer": true,
+            "name": "Intensity mapping order",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[INTENSITY_MAPPING_ORDER]"
+        },
+        {
+            "command-line-flag": "--inwarp",
+            "command-line-flag-separator": "=",
+            "description": "An existing file name. Name of file containing initial non-linear warps.",
+            "id": "inwarp_file",
+            "name": "Inwarp file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[INWARP_FILE]"
+        },
+        {
+            "command-line-flag": "--jout",
+            "command-line-flag-separator": "=",
+            "description": "A boolean or a file name. Name of file for writing out the jacobian of the field (for diagnostic or vbm purposes).",
+            "id": "jacobian_file",
+            "name": "Jacobian file",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "true",
+                "false"
+            ],
+            "value-key": "[JACOBIAN_FILE]"
+        },
+        {
+            "command-line-flag": "--jout",
+            "command-line-flag-separator": "=",
+            "description": "A boolean or a file name. Name of file for writing out the jacobian of the field (for diagnostic or vbm purposes).",
+            "id": "jacobian_file_2",
+            "name": "Jacobian file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[JACOBIAN_FILE]"
+        },
+        {
+            "command-line-flag": "--jacrange",
+            "command-line-flag-separator": "=",
+            "description": "A tuple of the form: (a float, a float). Allowed range of jacobian determinants, default 0.01, 100.0.",
+            "id": "jacobian_range",
+            "list": true,
+            "list-separator": ",",
+            "max-list-entries": 2,
+            "min-list-entries": 2,
+            "name": "Jacobian range",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[JACOBIAN_RANGE]"
+        },
+        {
+            "command-line-flag": "--logout",
+            "command-line-flag-separator": "=",
+            "description": "A file name. Name of log-file.",
+            "id": "log_file",
+            "name": "Log file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[LOG_FILE]"
+        },
+        {
+            "command-line-flag": "--miter",
+            "command-line-flag-separator": "=",
+            "description": "A list of items which are an integer (int or long). Max # of non-linear iterations list, default [5, 5, 5, 5].",
+            "id": "max_nonlin_iter",
+            "integer": true,
+            "list": true,
+            "list-separator": ",",
+            "name": "Max nonlin iter",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[MAX_NONLIN_ITER]"
+        },
+        {
+            "command-line-flag": "--refout",
+            "command-line-flag-separator": "=",
+            "description": "A boolean or a file name. Name of file for writing out intensity modulated --ref (for diagnostic purposes).",
+            "id": "modulatedref_file",
+            "name": "Modulatedref file",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "true",
+                "false"
+            ],
+            "value-key": "[MODULATEDREF_FILE]"
+        },
+        {
+            "command-line-flag": "--refout",
+            "command-line-flag-separator": "=",
+            "description": "A boolean or a file name. Name of file for writing out intensity modulated --ref (for diagnostic purposes).",
+            "id": "modulatedref_file_2",
+            "name": "Modulatedref file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[MODULATEDREF_FILE]"
+        },
+        {
+            "command-line-flag": "--intout",
+            "command-line-flag-separator": "=",
+            "description": "A boolean or a file name. Name of files for writing information pertaining to intensity mapping.",
+            "id": "out_intensitymap_file",
+            "name": "Out intensitymap file",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "true",
+                "false"
+            ],
+            "value-key": "[OUT_INTENSITYMAP_FILE]"
+        },
+        {
+            "command-line-flag": "--intout",
+            "command-line-flag-separator": "=",
+            "description": "A boolean or a file name. Name of files for writing information pertaining to intensity mapping.",
+            "id": "out_intensitymap_file_2",
+            "name": "Out intensitymap file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[OUT_INTENSITYMAP_FILE]"
+        },
+        {
+            "command-line-flag": "--ref",
+            "command-line-flag-separator": "=",
+            "description": "An existing file name. Name of reference image.",
+            "id": "ref_file",
+            "name": "Ref file",
+            "optional": false,
+            "type": "File",
+            "value-key": "[REF_FILE]"
+        },
+        {
+            "command-line-flag": "--reffwhm",
+            "command-line-flag-separator": "=",
+            "description": "A list of items which are an integer (int or long). Fwhm (in mm) of gaussian smoothing kernel for ref volume, default [4, 2, 0, 0].",
+            "id": "ref_fwhm",
+            "integer": true,
+            "list": true,
+            "list-separator": ",",
+            "name": "Ref fwhm",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[REF_FWHM]"
+        },
+        {
+            "command-line-flag": "--refmask",
+            "command-line-flag-separator": "=",
+            "description": "An existing file name. Name of file with mask in reference space.",
+            "id": "refmask_file",
+            "name": "Refmask file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[REFMASK_FILE]"
+        },
+        {
+            "command-line-flag": "--imprefval",
+            "command-line-flag-separator": "=",
+            "description": "A float. Value to mask out in --ref image. default =0.0.",
+            "id": "refmask_val",
+            "name": "Refmask val",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[REFMASK_VAL]"
+        },
+        {
+            "command-line-flag": "--lambda",
+            "command-line-flag-separator": "=",
+            "description": "A list of items which are a float. Weight of regularisation, default depending on --ssqlambda and --regmod switches. see user documetation.",
+            "id": "regularization_lambda",
+            "list": true,
+            "list-separator": ",",
+            "name": "Regularization lambda",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[REGULARIZATION_LAMBDA]"
+        },
+        {
+            "command-line-flag": "--regmod",
+            "command-line-flag-separator": "=",
+            "description": "'membrane_energy' or 'bending_energy'. Model for regularisation of warp-field [membrane_energy bending_energy], default bending_energy.",
+            "id": "regularization_model",
+            "name": "Regularization model",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "membrane_energy",
+                "bending_energy"
+            ],
+            "value-key": "[REGULARIZATION_MODEL]"
+        },
+        {
+            "command-line-flag": "--impinm",
+            "command-line-flag-separator": "=",
+            "description": "A boolean. Skip implicit masking  based on value in --in image. default = 0.",
+            "id": "skip_implicit_in_masking",
+            "integer": true,
+            "maximum": 1,
+            "minimum": 0,
+            "name": "Skip implicit in masking",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[SKIP_IMPLICIT_IN_MASKING]"
+        },
+        {
+            "command-line-flag": "--imprefm",
+            "command-line-flag-separator": "=",
+            "description": "A boolean. Skip implicit masking  based on value in --ref image. default = 0.",
+            "id": "skip_implicit_ref_masking",
+            "integer": true,
+            "maximum": 1,
+            "minimum": 0,
+            "name": "Skip implicit ref masking",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[SKIP_IMPLICIT_REF_MASKING]"
+        },
+        {
+            "command-line-flag": "--applyinmask",
+            "command-line-flag-separator": "=",
+            "description": "A boolean. Skip specified inmask if set, default false.",
+            "id": "skip_inmask",
+            "integer": true,
+            "maximum": 1,
+            "minimum": 0,
+            "name": "Skip inmask",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[SKIP_INMASK]"
+        },
+        {
+            "command-line-flag": "--estint",
+            "command-line-flag-separator": "=",
+            "description": "A boolean. Skip estimate intensity-mapping default false.",
+            "id": "skip_intensity_mapping",
+            "integer": true,
+            "maximum": 1,
+            "minimum": 0,
+            "name": "Skip intensity mapping",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[SKIP_INTENSITY_MAPPING]"
+        },
+        {
+            "command-line-flag": "--ssqlambda",
+            "command-line-flag-separator": "=",
+            "description": "A boolean. If true, lambda is not weighted by current ssq, default false.",
+            "id": "skip_lambda_ssq",
+            "integer": true,
+            "maximum": 1,
+            "minimum": 0,
+            "name": "Skip lambda ssq",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[SKIP_LAMBDA_SSQ]"
+        },
+        {
+            "command-line-flag": "--applyrefmask",
+            "command-line-flag-separator": "=",
+            "description": "A boolean. Skip specified refmask if set, default false.",
+            "id": "skip_refmask",
+            "integer": true,
+            "maximum": 1,
+            "minimum": 0,
+            "name": "Skip refmask",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[SKIP_REFMASK]"
+        },
+        {
+            "command-line-flag": "--splineorder",
+            "command-line-flag-separator": "=",
+            "description": "An integer (int or long). Order of spline, 2->quadratic spline, 3->cubic spline. default=3.",
+            "id": "spline_order",
+            "integer": true,
+            "name": "Spline order",
+            "optional": true,
+            "type": "Number",
+            "value-choices": [
+                2,
+                3
+            ],
+            "value-key": "[SPLINE_ORDER]"
+        },
+        {
+            "command-line-flag": "--subsamp",
+            "command-line-flag-separator": "=",
+            "description": "A list of items which are an integer (int or long). Sub-sampling scheme, list, default [4, 2, 1, 1].",
+            "id": "subsampling_scheme",
+            "integer": true,
+            "list": true,
+            "list-separator": ",",
+            "name": "Subsampling scheme",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[SUBSAMPLING_SCHEME]"
+        },
+        {
+            "command-line-flag": "--warpres",
+            "command-line-flag-separator": "=",
+            "description": "A tuple of the form: (an integer (int or long), an integer (int or long), an integer (int or long)). (approximate) resolution (in mm) of warp basis in x-, y- and z-direction, default 10, 10, 10.",
+            "id": "warp_resolution",
+            "integer": true,
+            "list": true,
+            "list-separator": ",",
+            "max-list-entries": 3,
+            "min-list-entries": 3,
+            "name": "Warp resolution",
+            "optional": true,
+            "type": "Number",
+            "value-key": "[WARP_RESOLUTION]"
+        },
+        {
+            "command-line-flag": "--iout",
+            "command-line-flag-separator": "=",
+            "description": "A file name. Name of output image.",
+            "id": "warped_file",
+            "name": "Warped file",
+            "optional": true,
+            "type": "File",
+            "value-key": "[WARPED_FILE]"
+        }
+    ],
+    "name": "FNIRT",
+    "output-files": [
+        {
+            "description": "A file name. File with warp field.",
+            "id": "field_file_outfile",
+            "name": "Field file",
+            "optional": true,
+            "path-template": "[FIELD_FILE]"
+        },
+        {
+            "description": "An existing file name. File with field coefficients.",
+            "id": "fieldcoeff_file_outfile",
+            "name": "Fieldcoeff file",
+            "optional": true,
+            "path-template": "[FIELDCOEFF_FILE]"
+        },
+        {
+            "description": "A file name. File containing jacobian of the field.",
+            "id": "jacobian_file_outfile",
+            "name": "Jacobian file",
+            "optional": true,
+            "path-template": "[JACOBIAN_FILE]"
+        },
+        {
+            "description": "A file name. Name of log-file.",
+            "id": "log_file_outfile",
+            "name": "Log file",
+            "optional": true,
+            "path-template": "[LOG_FILE]"
+        },
+        {
+            "description": "A file name. File containing intensity modulated --ref.",
+            "id": "modulatedref_file_outfile",
+            "name": "Modulatedref file",
+            "optional": true,
+            "path-template": "[MODULATEDREF_FILE]"
+        },
+        {
+            "description": "A list of from 2 to 2 items which are a file name. Files containing info pertaining to intensity mapping.",
+            "id": "out_intensitymap_file_outfile",
+            "name": "Out intensitymap file",
+            "optional": true,
+            "path-template": "[OUT_INTENSITYMAP_FILE]"
+        },
+        {
+            "description": "An existing file name. Warped image.",
+            "id": "warped_file_outfile",
+            "name": "Warped file",
+            "optional": true,
+            "path-template": "[WARPED_FILE]"
+        }
+    ],
+    "schema-version": "0.5",
+    "tags": {
+        "domain": [
+            "neuroinformatics",
+            "fmri"
+        ],
+        "source": "nipype-interface"
+    },
+    "tool-version": "1.0.0",
+    "url": "https://github.com/nipy/nipype/blob/master/nipype/interfaces/fsl/preprocess.py"
+}

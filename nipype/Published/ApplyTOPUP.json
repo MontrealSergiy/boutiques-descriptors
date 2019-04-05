@@ -1,0 +1,126 @@
+{
+    "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
+    "command-line": "applytopup [DATATYPE] [ENCODING_FILE] [IN_FILES] [IN_INDEX] [IN_TOPUP_FIELDCOEF] [INTERP] [METHOD] [OUT_CORRECTED]",
+    "container-image": {
+        "image": "mcin/docker-fsl:latest",
+        "index": "index.docker.io",
+        "type": "docker"
+    },
+    "description": "ApplyTOPUP, as implemented in Nipype (module: nipype.interfaces.fsl, interface: ApplyTOPUP).",
+    "doi": "10.5281/zenodo.2621487",
+    "inputs": [
+        {
+            "command-line-flag": "--datatype",
+            "command-line-flag-separator": "=",
+            "description": "'char' or 'short' or 'int' or 'float' or 'double'. Force output data type.",
+            "id": "datatype",
+            "name": "Datatype",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "char",
+                "short",
+                "int",
+                "float",
+                "double"
+            ],
+            "value-key": "[DATATYPE]"
+        },
+        {
+            "command-line-flag": "--datain",
+            "command-line-flag-separator": "=",
+            "description": "An existing file name. Name of text file with pe directions/times.",
+            "id": "encoding_file",
+            "name": "Encoding file",
+            "optional": false,
+            "type": "File",
+            "value-key": "[ENCODING_FILE]"
+        },
+        {
+            "command-line-flag": "--imain",
+            "command-line-flag-separator": "=",
+            "description": "A list of items which are an existing file name. Name of file with images.",
+            "id": "in_files",
+            "list": true,
+            "list-separator": ",",
+            "name": "In files",
+            "optional": false,
+            "type": "File",
+            "value-key": "[IN_FILES]"
+        },
+        {
+            "command-line-flag": "--inindex",
+            "command-line-flag-separator": "=",
+            "description": "A list of items which are an integer (int or long). Comma separated list of indices corresponding to --datain.",
+            "id": "in_index",
+            "integer": true,
+            "list": true,
+            "list-separator": ",",
+            "name": "In index",
+            "optional": false,
+            "type": "Number",
+            "value-key": "[IN_INDEX]"
+        },
+        {
+            "command-line-flag": "--topup",
+            "command-line-flag-separator": "=",
+            "description": "An existing file name. Topup file containing the field coefficients.",
+            "id": "in_topup_fieldcoef",
+            "name": "In topup fieldcoef",
+            "optional": false,
+            "type": "File",
+            "value-key": "[IN_TOPUP_FIELDCOEF]"
+        },
+        {
+            "command-line-flag": "--interp",
+            "command-line-flag-separator": "=",
+            "description": "'trilinear' or 'spline'. Interpolation method.",
+            "id": "interp",
+            "name": "Interp",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "trilinear",
+                "spline"
+            ],
+            "value-key": "[INTERP]"
+        },
+        {
+            "command-line-flag": "--method",
+            "command-line-flag-separator": "=",
+            "description": "'jac' or 'lsr'. Use jacobian modulation (jac) or least-squares resampling (lsr).",
+            "id": "method",
+            "name": "Method",
+            "optional": true,
+            "type": "String",
+            "value-choices": [
+                "jac",
+                "lsr"
+            ],
+            "value-key": "[METHOD]"
+        }
+    ],
+    "name": "ApplyTOPUP",
+    "output-files": [
+        {
+            "command-line-flag": "--out",
+            "command-line-flag-separator": "=",
+            "description": "An existing file name. Name of 4d image file with unwarped images.",
+            "id": "out_corrected",
+            "name": "Out corrected",
+            "optional": false,
+            "path-template": "out_corrected",
+            "value-key": "[OUT_CORRECTED]"
+        }
+    ],
+    "schema-version": "0.5",
+    "tags": {
+        "domain": [
+            "neuroinformatics",
+            "dmri"
+        ],
+        "source": "nipype-interface"
+    },
+    "tool-version": "1.0.0",
+    "url": "https://github.com/nipy/nipype/blob/master/nipype/interfaces/fsl/epi.py"
+}

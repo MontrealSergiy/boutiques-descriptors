@@ -1,6 +1,6 @@
 {
     "name": "SUSAN",
-    "command-line": "SUSAN [BRIGHTNESS_THRESHOLD] [DIMENSION] [FWHM] [IN_FILE] [OUT_FILE] [USANS] [USE_MEDIAN]",
+    "command-line": "SUSAN [IN_FILE] [BRIGHTNESS_THRESHOLD] [FWHM] [DIMENSION] [USE_MEDIAN] [USANS] [OUT_FILE]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "SUSAN, as implemented in Nipype (module: nipype.interfaces.fsl, interface: SUSAN).",
     "inputs": [
@@ -85,11 +85,15 @@
             "description": "An existing file name. Smoothed output file."
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

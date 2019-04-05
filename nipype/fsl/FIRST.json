@@ -1,6 +1,6 @@
 {
     "name": "FIRST",
-    "command-line": "FIRST [AFFINE_FILE] [BRAIN_EXTRACTED] [IN_FILE] [LIST_OF_SPECIFIC_STRUCTURES] [METHOD] [METHOD_AS_NUMERICAL_THRESHOLD] [NO_CLEANUP] [OUT_FILE] [VERBOSE]",
+    "command-line": "FIRST [IN_FILE] [VERBOSE] [BRAIN_EXTRACTED] [NO_CLEANUP] [METHOD_AS_NUMERICAL_THRESHOLD] [LIST_OF_SPECIFIC_STRUCTURES] [AFFINE_FILE] [OUT_FILE]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "FIRST, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FIRST).",
     "inputs": [
@@ -37,6 +37,7 @@
             "type": "String",
             "list": true,
             "min-list-entries": 1,
+            "list-separator": ",",
             "value-key": "[LIST_OF_SPECIFIC_STRUCTURES]",
             "command-line-flag": "-s",
             "description": "A list of at least 1 items which are a unicode string. Runs only on the specified structures (e.g. l_hipp, r_hippl_accu, r_accu, l_amyg, r_amygl_caud, r_caud, l_pall, r_palll_puta, r_puta, l_thal, r_thal, brstem.",
@@ -138,11 +139,15 @@
             "mutually-exclusive": true
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

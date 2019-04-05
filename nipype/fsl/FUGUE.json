@@ -1,6 +1,6 @@
 {
     "name": "FUGUE",
-    "command-line": "FUGUE [ASYM_SE_TIME] [DESPIKE_2DFILTER] [DESPIKE_THRESHOLD] [DWELL_TIME] [DWELL_TO_ASYM_RATIO] [FMAP_IN_FILE] [FMAP_OUT_FILE] [FORWARD_WARPING] [FOURIER_ORDER] [ICORR] [ICORR_ONLY] [IN_FILE] [MASK_FILE] [MEDIAN_2DFILTER] [NO_EXTEND] [NO_GAP_FILL] [NOKSPACE] [PAVA] [PHASE_CONJUGATE] [PHASEMAP_IN_FILE] [POLY_ORDER] [SAVE_FMAP] [SAVE_SHIFT] [SAVE_UNMASKED_FMAP] [SAVE_UNMASKED_SHIFT] [SHIFT_IN_FILE] [SHIFT_OUT_FILE] [SMOOTH2D] [SMOOTH3D] [UNWARP_DIRECTION] [UNWARPED_FILE] [WARPED_FILE]",
+    "command-line": "FUGUE  [ASYM_SE_TIME] [DESPIKE_2DFILTER] [DESPIKE_THRESHOLD] [DWELL_TIME] [DWELL_TO_ASYM_RATIO] [FMAP_IN_FILE] [FMAP_OUT_FILE] [FORWARD_WARPING] [FOURIER_ORDER] [ICORR] [ICORR_ONLY] [IN_FILE] [MASK_FILE] [MEDIAN_2DFILTER] [NO_EXTEND] [NO_GAP_FILL] [NOKSPACE] [PAVA] [PHASE_CONJUGATE] [PHASEMAP_IN_FILE] [POLY_ORDER] [SAVE_FMAP] [SAVE_SHIFT] [SAVE_UNMASKED_FMAP] [SAVE_UNMASKED_SHIFT] [SHIFT_IN_FILE] [SHIFT_OUT_FILE] [SMOOTH2D] [SMOOTH3D] [UNWARP_DIRECTION] [UNWARPED_FILE] [WARPED_FILE]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "FUGUE, as implemented in Nipype (module: nipype.interfaces.fsl, interface: FUGUE).",
     "inputs": [
@@ -9,7 +9,8 @@
             "name": "Asym se time",
             "type": "Number",
             "value-key": "[ASYM_SE_TIME]",
-            "command-line-flag": "--asym=",
+            "command-line-flag": "--asym",
+            "command-line-flag-separator": "=",
             "description": "A float. Set the fieldmap asymmetric spin echo time (sec).",
             "optional": true
         },
@@ -27,7 +28,8 @@
             "name": "Despike threshold",
             "type": "Number",
             "value-key": "[DESPIKE_THRESHOLD]",
-            "command-line-flag": "--despikethreshold=",
+            "command-line-flag": "--despikethreshold",
+            "command-line-flag-separator": "=",
             "description": "A float. Specify the threshold for de-spiking (default=3.0).",
             "optional": true
         },
@@ -36,7 +38,8 @@
             "name": "Dwell time",
             "type": "Number",
             "value-key": "[DWELL_TIME]",
-            "command-line-flag": "--dwell=",
+            "command-line-flag": "--dwell",
+            "command-line-flag-separator": "=",
             "description": "A float. Set the epi dwell time per phase-encode line - same as echo spacing - (sec).",
             "optional": true
         },
@@ -45,7 +48,8 @@
             "name": "Dwell to asym ratio",
             "type": "Number",
             "value-key": "[DWELL_TO_ASYM_RATIO]",
-            "command-line-flag": "--dwelltoasym=",
+            "command-line-flag": "--dwelltoasym",
+            "command-line-flag-separator": "=",
             "description": "A float. Set the dwell to asym time ratio.",
             "optional": true
         },
@@ -54,7 +58,8 @@
             "name": "Fmap in file",
             "type": "File",
             "value-key": "[FMAP_IN_FILE]",
-            "command-line-flag": "--loadfmap=",
+            "command-line-flag": "--loadfmap",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename for loading fieldmap (rad/s).",
             "optional": true
         },
@@ -63,7 +68,8 @@
             "name": "Fmap out file",
             "type": "File",
             "value-key": "[FMAP_OUT_FILE]",
-            "command-line-flag": "--savefmap=",
+            "command-line-flag": "--savefmap",
+            "command-line-flag-separator": "=",
             "description": "A file name. Filename for saving fieldmap (rad/s).",
             "optional": true
         },
@@ -83,7 +89,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[FOURIER_ORDER]",
-            "command-line-flag": "--fourier=",
+            "command-line-flag": "--fourier",
+            "command-line-flag-separator": "=",
             "description": "An integer (int or long). Apply fourier (sinusoidal) fitting of order n.",
             "optional": true
         },
@@ -110,7 +117,8 @@
             "name": "In file",
             "type": "File",
             "value-key": "[IN_FILE]",
-            "command-line-flag": "--in=",
+            "command-line-flag": "--in",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename of input volume.",
             "optional": true
         },
@@ -119,7 +127,8 @@
             "name": "Mask file",
             "type": "File",
             "value-key": "[MASK_FILE]",
-            "command-line-flag": "--mask=",
+            "command-line-flag": "--mask",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename for loading valid mask.",
             "optional": true
         },
@@ -182,7 +191,8 @@
             "name": "Phasemap in file",
             "type": "File",
             "value-key": "[PHASEMAP_IN_FILE]",
-            "command-line-flag": "--phasemap=",
+            "command-line-flag": "--phasemap",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename for input phase image.",
             "optional": true
         },
@@ -192,7 +202,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[POLY_ORDER]",
-            "command-line-flag": "--poly=",
+            "command-line-flag": "--poly",
+            "command-line-flag-separator": "=",
             "description": "An integer (int or long). Apply polynomial fitting of order n.",
             "optional": true
         },
@@ -237,7 +248,8 @@
             "name": "Shift in file",
             "type": "File",
             "value-key": "[SHIFT_IN_FILE]",
-            "command-line-flag": "--loadshift=",
+            "command-line-flag": "--loadshift",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Filename for reading pixel shift volume.",
             "optional": true
         },
@@ -246,7 +258,8 @@
             "name": "Shift out file",
             "type": "File",
             "value-key": "[SHIFT_OUT_FILE]",
-            "command-line-flag": "--saveshift=",
+            "command-line-flag": "--saveshift",
+            "command-line-flag-separator": "=",
             "description": "A file name. Filename for saving pixel shift volume.",
             "optional": true
         },
@@ -255,7 +268,8 @@
             "name": "Smooth2d",
             "type": "Number",
             "value-key": "[SMOOTH2D]",
-            "command-line-flag": "--smooth2=",
+            "command-line-flag": "--smooth2",
+            "command-line-flag-separator": "=",
             "description": "A float. Apply 2d gaussian smoothing of sigma n (in mm).",
             "optional": true
         },
@@ -264,7 +278,8 @@
             "name": "Smooth3d",
             "type": "Number",
             "value-key": "[SMOOTH3D]",
-            "command-line-flag": "--smooth3=",
+            "command-line-flag": "--smooth3",
+            "command-line-flag-separator": "=",
             "description": "A float. Apply 3d gaussian smoothing of sigma n (in mm).",
             "optional": true
         },
@@ -273,7 +288,8 @@
             "name": "Unwarp direction",
             "type": "String",
             "value-key": "[UNWARP_DIRECTION]",
-            "command-line-flag": "--unwarpdir=",
+            "command-line-flag": "--unwarpdir",
+            "command-line-flag-separator": "=",
             "description": "'x' or 'y' or 'z' or 'x-' or 'y-' or 'z-'. Specifies direction of warping (default y).",
             "optional": true,
             "value-choices": [
@@ -290,7 +306,8 @@
             "name": "Unwarped file",
             "type": "File",
             "value-key": "[UNWARPED_FILE]",
-            "command-line-flag": "--unwarp=",
+            "command-line-flag": "--unwarp",
+            "command-line-flag-separator": "=",
             "description": "A file name. Apply unwarping and save as filename.",
             "optional": true
         },
@@ -299,7 +316,8 @@
             "name": "Warped file",
             "type": "File",
             "value-key": "[WARPED_FILE]",
-            "command-line-flag": "--warp=",
+            "command-line-flag": "--warp",
+            "command-line-flag-separator": "=",
             "description": "A file name. Apply forward warping and save as filename.",
             "optional": true
         }
@@ -357,8 +375,8 @@
             "id": "all_or_none_group_3",
             "name": "All or none group 3",
             "members": [
-                "icorr",
-                "shift_in_file"
+                "shift_in_file",
+                "icorr"
             ],
             "all-or-none": true
         },
@@ -384,8 +402,8 @@
             "id": "mutex_group_2",
             "name": "Mutex group 2",
             "members": [
-                "save_shift",
-                "save_unmasked_shift"
+                "save_unmasked_shift",
+                "save_shift"
             ],
             "mutually-exclusive": true
         },
@@ -399,11 +417,15 @@
             "mutually-exclusive": true
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

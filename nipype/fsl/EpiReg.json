@@ -1,6 +1,6 @@
 {
     "name": "EpiReg",
-    "command-line": "EpiReg [ECHOSPACING] [EPI] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [OUT_BASE] [PEDIR] [T1_BRAIN] [T1_HEAD] [WEIGHT_IMAGE] [WMSEG]",
+    "command-line": "EpiReg [EPI] [T1_HEAD] [T1_BRAIN] [OUT_BASE] [ECHOSPACING] [FMAP] [FMAPMAG] [FMAPMAGBRAIN] [NO_CLEAN] [NO_FMAPREG] [PEDIR] [WEIGHT_IMAGE] [WMSEG]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "EpiReg, as implemented in Nipype (module: nipype.interfaces.fsl, interface: EpiReg).",
     "inputs": [
@@ -9,7 +9,8 @@
             "name": "Echospacing",
             "type": "Number",
             "value-key": "[ECHOSPACING]",
-            "command-line-flag": "--echospacing=",
+            "command-line-flag": "--echospacing",
+            "command-line-flag-separator": "=",
             "description": "A float. Effective epi echo spacing                                 (sometimes called dwell time) - in seconds.",
             "optional": true
         },
@@ -18,7 +19,8 @@
             "name": "Epi",
             "type": "File",
             "value-key": "[EPI]",
-            "command-line-flag": "--epi=",
+            "command-line-flag": "--epi",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Epi image.",
             "optional": false
         },
@@ -27,7 +29,8 @@
             "name": "Fmap",
             "type": "File",
             "value-key": "[FMAP]",
-            "command-line-flag": "--fmap=",
+            "command-line-flag": "--fmap",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Fieldmap image (in rad/s).",
             "optional": true
         },
@@ -36,7 +39,8 @@
             "name": "Fmapmag",
             "type": "File",
             "value-key": "[FMAPMAG]",
-            "command-line-flag": "--fmapmag=",
+            "command-line-flag": "--fmapmag",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Fieldmap magnitude image - wholehead.",
             "optional": true
         },
@@ -45,7 +49,8 @@
             "name": "Fmapmagbrain",
             "type": "File",
             "value-key": "[FMAPMAGBRAIN]",
-            "command-line-flag": "--fmapmagbrain=",
+            "command-line-flag": "--fmapmagbrain",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Fieldmap magnitude image - brain extracted.",
             "optional": true
         },
@@ -73,7 +78,8 @@
             "name": "Out base",
             "type": "String",
             "value-key": "[OUT_BASE]",
-            "command-line-flag": "--out=",
+            "command-line-flag": "--out",
+            "command-line-flag-separator": "=",
             "description": "A string. Output base name.",
             "optional": true,
             "default-value": "epi2struct"
@@ -83,7 +89,8 @@
             "name": "Pedir",
             "type": "String",
             "value-key": "[PEDIR]",
-            "command-line-flag": "--pedir=",
+            "command-line-flag": "--pedir",
+            "command-line-flag-separator": "=",
             "description": "'x' or 'y' or 'z' or '-x' or '-y' or '-z'. Phase encoding direction, dir = x/y/z/-x/-y/-z.",
             "optional": true,
             "value-choices": [
@@ -100,7 +107,8 @@
             "name": "T1 brain",
             "type": "File",
             "value-key": "[T1_BRAIN]",
-            "command-line-flag": "--t1brain=",
+            "command-line-flag": "--t1brain",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Brain extracted t1 image.",
             "optional": false
         },
@@ -109,7 +117,8 @@
             "name": "T1 head",
             "type": "File",
             "value-key": "[T1_HEAD]",
-            "command-line-flag": "--t1=",
+            "command-line-flag": "--t1",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Wholehead t1 image.",
             "optional": false
         },
@@ -118,7 +127,8 @@
             "name": "Weight image",
             "type": "File",
             "value-key": "[WEIGHT_IMAGE]",
-            "command-line-flag": "--weight=",
+            "command-line-flag": "--weight",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Weighting image (in t1 space).",
             "optional": true
         },
@@ -127,7 +137,8 @@
             "name": "Wmseg",
             "type": "File",
             "value-key": "[WMSEG]",
-            "command-line-flag": "--wmseg=",
+            "command-line-flag": "--wmseg",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. White matter segmentation of t1 image, has to be named                  like the t1brain and end on _wmseg.",
             "optional": true
         }
@@ -232,11 +243,15 @@
             "description": "An existing file name. White matter segmentation used in flirt bbr."
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

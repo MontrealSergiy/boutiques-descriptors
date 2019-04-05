@@ -1,6 +1,6 @@
 {
     "name": "XFibres5",
-    "command-line": "XFibres5 [ALL_ARD] [BURN_IN] [BURN_IN_NO_ARD] [BVALS] [BVECS] [CNLINEAR] [DWI] [F0_ARD] [F0_NOARD] [FORCE_DIR] [FUDGE] [GRADNONLIN] [LOGDIR] [MASK] [MODEL] [N_FIBRES] [N_JUMPS] [NO_ARD] [NO_SPAT] [NON_LINEAR] [RICIAN] [SAMPLE_EVERY] [SEED] [UPDATE_PROPOSAL_EVERY]",
+    "command-line": "XFibres5  [ALL_ARD] [BURN_IN] [BURN_IN_NO_ARD] [BVALS] [BVECS] [CNLINEAR] [DWI] [F0_ARD] [F0_NOARD] [FORCE_DIR] [FUDGE] [GRADNONLIN] [LOGDIR] [MASK] [MODEL] [N_FIBRES] [N_JUMPS] [NO_ARD] [NO_SPAT] [NON_LINEAR] [RICIAN] [SAMPLE_EVERY] [SEED] [UPDATE_PROPOSAL_EVERY]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "XFibres5, as implemented in Nipype (module: nipype.interfaces.fsl, interface: XFibres5).",
     "inputs": [
@@ -19,7 +19,8 @@
             "type": "Number",
             "minimum": 0,
             "value-key": "[BURN_IN]",
-            "command-line-flag": "--burnin=",
+            "command-line-flag": "--burnin",
+            "command-line-flag-separator": "=",
             "description": "A long integer >= 0. Total num of jumps at start of mcmc to be discarded.",
             "optional": true,
             "default-value": 0
@@ -30,7 +31,8 @@
             "type": "Number",
             "minimum": 0,
             "value-key": "[BURN_IN_NO_ARD]",
-            "command-line-flag": "--burnin_noard=",
+            "command-line-flag": "--burnin_noard",
+            "command-line-flag-separator": "=",
             "description": "A long integer >= 0. Num of burnin jumps before the ard is imposed.",
             "optional": true,
             "default-value": 0
@@ -40,7 +42,8 @@
             "name": "Bvals",
             "type": "File",
             "value-key": "[BVALS]",
-            "command-line-flag": "--bvals=",
+            "command-line-flag": "--bvals",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. B values file.",
             "optional": false
         },
@@ -49,7 +52,8 @@
             "name": "Bvecs",
             "type": "File",
             "value-key": "[BVECS]",
-            "command-line-flag": "--bvecs=",
+            "command-line-flag": "--bvecs",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. B vectors file.",
             "optional": false
         },
@@ -67,7 +71,8 @@
             "name": "Dwi",
             "type": "File",
             "value-key": "[DWI]",
-            "command-line-flag": "--data=",
+            "command-line-flag": "--data",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Diffusion weighted image data file.",
             "optional": false
         },
@@ -105,7 +110,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[FUDGE]",
-            "command-line-flag": "--fudge=",
+            "command-line-flag": "--fudge",
+            "command-line-flag-separator": "=",
             "description": "An integer (int or long). Ard fudge factor.",
             "optional": true
         },
@@ -114,7 +120,8 @@
             "name": "Gradnonlin",
             "type": "File",
             "value-key": "[GRADNONLIN]",
-            "command-line-flag": "--gradnonlin=",
+            "command-line-flag": "--gradnonlin",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Gradient file corresponding to slice.",
             "optional": true
         },
@@ -123,7 +130,8 @@
             "name": "Logdir",
             "type": "File",
             "value-key": "[LOGDIR]",
-            "command-line-flag": "--logdir=",
+            "command-line-flag": "--logdir",
+            "command-line-flag-separator": "=",
             "description": "A directory name. No description provided.",
             "optional": true,
             "default-value": "."
@@ -133,7 +141,8 @@
             "name": "Mask",
             "type": "File",
             "value-key": "[MASK]",
-            "command-line-flag": "--mask=",
+            "command-line-flag": "--mask",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Brain binary mask file (i.e. from bet).",
             "optional": false
         },
@@ -142,7 +151,8 @@
             "name": "Model",
             "type": "Number",
             "value-key": "[MODEL]",
-            "command-line-flag": "--model=",
+            "command-line-flag": "--model",
+            "command-line-flag-separator": "=",
             "description": "1 or 2 or 3. Use monoexponential (1, default, required for single-shell) or multiexponential (2, multi-shell) model.",
             "optional": true,
             "integer": true,
@@ -158,7 +168,8 @@
             "type": "Number",
             "minimum": 1,
             "value-key": "[N_FIBRES]",
-            "command-line-flag": "--nfibres=",
+            "command-line-flag": "--nfibres",
+            "command-line-flag-separator": "=",
             "description": "A long integer >= 1. Maximum number of fibres to fit in each voxel.",
             "optional": false,
             "default-value": 2
@@ -169,7 +180,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[N_JUMPS]",
-            "command-line-flag": "--njumps=",
+            "command-line-flag": "--njumps",
+            "command-line-flag-separator": "=",
             "description": "An integer (int or long). Num of jumps to be made by mcmc.",
             "optional": true,
             "default-value": 5000
@@ -216,7 +228,8 @@
             "type": "Number",
             "minimum": 0,
             "value-key": "[SAMPLE_EVERY]",
-            "command-line-flag": "--sampleevery=",
+            "command-line-flag": "--sampleevery",
+            "command-line-flag-separator": "=",
             "description": "A long integer >= 0. Num of jumps for each sample (mcmc).",
             "optional": true,
             "default-value": 1
@@ -227,7 +240,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[SEED]",
-            "command-line-flag": "--seed=",
+            "command-line-flag": "--seed",
+            "command-line-flag-separator": "=",
             "description": "An integer (int or long). Seed for pseudo random number generator.",
             "optional": true
         },
@@ -237,7 +251,8 @@
             "type": "Number",
             "minimum": 1,
             "value-key": "[UPDATE_PROPOSAL_EVERY]",
-            "command-line-flag": "--updateproposalevery=",
+            "command-line-flag": "--updateproposalevery",
+            "command-line-flag-separator": "=",
             "description": "A long integer >= 1. Num of jumps for each update to the proposal density std (mcmc).",
             "optional": true,
             "default-value": 40
@@ -339,18 +354,22 @@
             "id": "mutex_group_4",
             "name": "Mutex group 4",
             "members": [
-                "f0_noard",
                 "all_ard",
+                "f0_noard",
                 "f0_ard"
             ],
             "mutually-exclusive": true
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "TractSkeleton",
-    "command-line": "TractSkeleton [ALT_DATA_FILE] [ALT_SKELETON] [DATA_FILE] [DISTANCE_MAP] [IN_FILE] [PROJECT_DATA] [PROJECTED_DATA] [SEARCH_MASK_FILE] [SKELETON_FILE] [THRESHOLD] [USE_CINGULUM_MASK]",
+    "command-line": "TractSkeleton  [ALT_DATA_FILE] [ALT_SKELETON] [DATA_FILE] [DISTANCE_MAP] [IN_FILE] [PROJECT_DATA] [PROJECTED_DATA] [SEARCH_MASK_FILE] [SKELETON_FILE] [THRESHOLD] [USE_CINGULUM_MASK]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "TractSkeleton, as implemented in Nipype (module: nipype.interfaces.fsl, interface: TractSkeleton).",
     "inputs": [
@@ -140,8 +140,8 @@
             "name": "All or none group",
             "members": [
                 "project_data",
-                "threshold",
                 "data_file",
+                "threshold",
                 "distance_map"
             ],
             "all-or-none": true
@@ -156,11 +156,15 @@
             "mutually-exclusive": true
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }

@@ -1,6 +1,6 @@
 {
     "name": "Eddy",
-    "command-line": "Eddy [CNR_MAPS] [DONT_PEAS] [DONT_SEP_OFFS_MOVE] [FEP] [FIELD] [FIELD_MAT] [FLM] [FUDGE_FACTOR] [FWHM] [IN_ACQP] [IN_BVAL] [IN_BVEC] [IN_FILE] [IN_INDEX] [IN_MASK] [IN_TOPUP_FIELDCOEF] [IN_TOPUP_MOVPAR] [INTERP] [IS_SHELLED] [METHOD] [NITER] [NUM_THREADS] [NVOXHP] [OUT_BASE] [REPOL] [RESIDUALS] [SESSION] [SLM] [USE_CUDA]",
+    "command-line": "Eddy  [CNR_MAPS] [DONT_PEAS] [DONT_SEP_OFFS_MOVE] [FEP] [FIELD] [FIELD_MAT] [FLM] [FUDGE_FACTOR] [FWHM] [IN_ACQP] [IN_BVAL] [IN_BVEC] [IN_FILE] [IN_INDEX] [IN_MASK] [IN_TOPUP_FIELDCOEF] [IN_TOPUP_MOVPAR] [INTERP] [IS_SHELLED] [METHOD] [NITER] [NUM_THREADS] [NVOXHP] [OUT_BASE] [REPOL] [RESIDUALS] [SESSION] [SLM] [USE_CUDA]",
     "author": "Nipype (interface), Oxford Centre for Functional MRI of the Brain (FMRIB) (tool)",
     "description": "Eddy, as implemented in Nipype (module: nipype.interfaces.fsl, interface: Eddy).",
     "inputs": [
@@ -45,7 +45,8 @@
             "name": "Field",
             "type": "String",
             "value-key": "[FIELD]",
-            "command-line-flag": "--field=",
+            "command-line-flag": "--field",
+            "command-line-flag-separator": "=",
             "description": "A unicode string. Nontopup fieldmap scaled in hz - filename has to be provided without an extension. topup is strongly recommended.",
             "optional": true
         },
@@ -54,7 +55,8 @@
             "name": "Field mat",
             "type": "File",
             "value-key": "[FIELD_MAT]",
-            "command-line-flag": "--field_mat=",
+            "command-line-flag": "--field_mat",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Matrix that specifies the relative locations of the field specified by --field and first volume in file --imain.",
             "optional": true
         },
@@ -63,7 +65,8 @@
             "name": "Flm",
             "type": "String",
             "value-key": "[FLM]",
-            "command-line-flag": "--flm=",
+            "command-line-flag": "--flm",
+            "command-line-flag-separator": "=",
             "description": "'linear' or 'quadratic' or 'cubic'. First level ec model.",
             "optional": true,
             "value-choices": [
@@ -77,7 +80,8 @@
             "name": "Fudge factor",
             "type": "Number",
             "value-key": "[FUDGE_FACTOR]",
-            "command-line-flag": "--ff=",
+            "command-line-flag": "--ff",
+            "command-line-flag-separator": "=",
             "description": "A float. Fudge factor for hyperparameter error variance.",
             "optional": true,
             "default-value": 10.0
@@ -87,7 +91,8 @@
             "name": "Fwhm",
             "type": "Number",
             "value-key": "[FWHM]",
-            "command-line-flag": "--fwhm=",
+            "command-line-flag": "--fwhm",
+            "command-line-flag-separator": "=",
             "description": "A float. Fwhm for conditioning filter when estimating the parameters.",
             "optional": true
         },
@@ -96,7 +101,8 @@
             "name": "In acqp",
             "type": "File",
             "value-key": "[IN_ACQP]",
-            "command-line-flag": "--acqp=",
+            "command-line-flag": "--acqp",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. File containing acquisition parameters.",
             "optional": false
         },
@@ -105,7 +111,8 @@
             "name": "In bval",
             "type": "File",
             "value-key": "[IN_BVAL]",
-            "command-line-flag": "--bvals=",
+            "command-line-flag": "--bvals",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. File containing the b-values for all volumes in --imain.",
             "optional": false
         },
@@ -114,7 +121,8 @@
             "name": "In bvec",
             "type": "File",
             "value-key": "[IN_BVEC]",
-            "command-line-flag": "--bvecs=",
+            "command-line-flag": "--bvecs",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. File containing the b-vectors for all volumes in --imain.",
             "optional": false
         },
@@ -123,7 +131,8 @@
             "name": "In file",
             "type": "File",
             "value-key": "[IN_FILE]",
-            "command-line-flag": "--imain=",
+            "command-line-flag": "--imain",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. File containing all the images to estimate distortions for.",
             "optional": false
         },
@@ -132,7 +141,8 @@
             "name": "In index",
             "type": "File",
             "value-key": "[IN_INDEX]",
-            "command-line-flag": "--index=",
+            "command-line-flag": "--index",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. File containing indices for all volumes in --imain into --acqp and --topup.",
             "optional": false
         },
@@ -141,7 +151,8 @@
             "name": "In mask",
             "type": "File",
             "value-key": "[IN_MASK]",
-            "command-line-flag": "--mask=",
+            "command-line-flag": "--mask",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Mask to indicate brain.",
             "optional": false
         },
@@ -150,7 +161,8 @@
             "name": "In topup fieldcoef",
             "type": "File",
             "value-key": "[IN_TOPUP_FIELDCOEF]",
-            "command-line-flag": "--topup=",
+            "command-line-flag": "--topup",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. Topup file containing the field coefficients.",
             "optional": true
         },
@@ -167,7 +179,8 @@
             "name": "Interp",
             "type": "String",
             "value-key": "[INTERP]",
-            "command-line-flag": "--interp=",
+            "command-line-flag": "--interp",
+            "command-line-flag-separator": "=",
             "description": "'spline' or 'trilinear'. Interpolation model for estimation step.",
             "optional": true,
             "value-choices": [
@@ -189,7 +202,8 @@
             "name": "Method",
             "type": "String",
             "value-key": "[METHOD]",
-            "command-line-flag": "--resamp=",
+            "command-line-flag": "--resamp",
+            "command-line-flag-separator": "=",
             "description": "'jac' or 'lsr'. Final resampling method (jacobian/least squares).",
             "optional": true,
             "value-choices": [
@@ -203,7 +217,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[NITER]",
-            "command-line-flag": "--niter=",
+            "command-line-flag": "--niter",
+            "command-line-flag-separator": "=",
             "description": "An integer (int or long). Number of iterations.",
             "optional": true,
             "default-value": 5
@@ -224,7 +239,8 @@
             "type": "Number",
             "integer": true,
             "value-key": "[NVOXHP]",
-            "command-line-flag": "--nvoxhp=",
+            "command-line-flag": "--nvoxhp",
+            "command-line-flag-separator": "=",
             "description": "An integer (int or long). # of voxels used to estimate the hyperparameters.",
             "optional": true,
             "default-value": 1000
@@ -234,7 +250,8 @@
             "name": "Out base",
             "type": "String",
             "value-key": "[OUT_BASE]",
-            "command-line-flag": "--out=",
+            "command-line-flag": "--out",
+            "command-line-flag-separator": "=",
             "description": "A unicode string. Basename for output (warped) image.",
             "optional": true,
             "default-value": "eddy_corrected"
@@ -262,7 +279,8 @@
             "name": "Session",
             "type": "File",
             "value-key": "[SESSION]",
-            "command-line-flag": "--session=",
+            "command-line-flag": "--session",
+            "command-line-flag-separator": "=",
             "description": "An existing file name. File containing session indices for all volumes in --imain.",
             "optional": true
         },
@@ -271,7 +289,8 @@
             "name": "Slm",
             "type": "String",
             "value-key": "[SLM]",
-            "command-line-flag": "--slm=",
+            "command-line-flag": "--slm",
+            "command-line-flag-separator": "=",
             "description": "'none' or 'linear' or 'quadratic'. Second level ec model.",
             "optional": true,
             "value-choices": [
@@ -366,11 +385,15 @@
             "all-or-none": true
         }
     ],
-    "tool-version": "No version provided.",
+    "tool-version": "1.0.0",
     "schema-version": "0.5",
     "container-image": {
         "image": "mcin/docker-fsl:latest",
         "type": "docker",
         "index": "index.docker.io"
+    },
+    "tags": {
+        "domain": "neuroinformatics",
+        "source": "nipype-interface"
     }
 }
